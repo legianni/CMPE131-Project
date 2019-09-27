@@ -1,0 +1,57 @@
+/* To update CSS, clear cache or open the server in incognito */
+/* static css files are automatically  stored in cache */
+
+.calendar-box{
+    height: 65%;
+    width: 70%;
+    color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.calendar-left{
+    display: inline-block;
+    background-color: rgb(41, 41, 41);
+}
+.calendar-date{
+    font-size: 28px;
+    text-align: center;
+}
+.calendar-event{
+    font-size: 22px;
+    text-align: center;
+}
+.calendar-right{
+    text-align: center;
+}
+.calendar-month{
+    margin: auto;
+}
+.calendar-month .btn{
+    font-size: 12px;
+    margin: 1px;
+}
+.calendar-month .btn:hover{
+    background-color: black;
+    color: white;
+}
+.calendar-days{
+    padding-top: 25px;
+    margin: auto;
+}
+.calendar-day{
+    padding-right: 35px;
+}
+.calendar-days .btn{
+    text-align: center;
+    font-size: 12px;
+    width: 3em;
+    margin-top: 10px;
+}
+.calendar-days .btn:hover{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}

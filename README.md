@@ -1,0 +1,3 @@
+Basic calendar. We're probably gonna have to use the google calendar API.
+Making the calendar change days depending on the month/year is gonna be
+super difficult...
