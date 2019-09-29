@@ -3,7 +3,7 @@
 
 .calendar-box{
     height: 65%;
-    width: 70%;
+    width: 65%;
     color: white;
     position: fixed;
     top: 50%;
@@ -26,7 +26,10 @@
     text-align: center;
 }
 .calendar-month{
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 .calendar-month .btn{
     font-size: 12px;
@@ -38,15 +41,18 @@
 }
 .calendar-days{
     padding-top: 25px;
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 .calendar-day{
     padding-right: 35px;
 }
 .calendar-days .btn{
     text-align: center;
-    font-size: 12px;
-    width: 3em;
+    font-size: 14px;
+    width: 4em;
     margin-top: 10px;
 }
 .calendar-days .btn:hover{
