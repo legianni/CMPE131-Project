@@ -1,6 +1,8 @@
 /* To update CSS, clear cache or open the server in incognito */
 /* static css files are automatically  stored in cache */
 
+
+/*  CALENDAR CSS */
 .calendar-box{
     height: 65%;
     width: 65%;
@@ -60,4 +62,12 @@
     border-radius: 5px;
     background-color: white;
     color: black;
+}
+
+/* LOGIN FORM CSS */
+.login-form{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

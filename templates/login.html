@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div class="login-form">
+        <div>
+            {{ form.email.label }}
+            {{ form.email(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.remember.label }}
+            {{ form.remember }}
+        </div>
+        <div>
+            {{ form.submit(class_="btn btn-primary") }}
+        </div>
+        <div>
+            <a href="#">Forgot Password</a>
+        </div>
+    </div>
+</body>
+
+</html>
