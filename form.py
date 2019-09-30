@@ -7,3 +7,8 @@ class LoginInput(FlaskForm):
     password = PasswordField('Password')
     remember = BooleanField('Remember')
     submit = SubmitField('Submit')
+
+
+class AddFriend(FlaskForm):
+    username = StringField('Username')
+    search = SubmitField('Search')

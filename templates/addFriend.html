@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Friend</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <div class="add-form" >
+        <div>
+            {{ form.username.label }}
+            {{ form.username(size=48)}}
+        </div>
+        <div>
+            {{ form.search(class_="btn btn-primary") }}
+        </div>
+    </div>
+</body>
+</html>
