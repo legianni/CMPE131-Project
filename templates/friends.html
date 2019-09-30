@@ -1,38 +1,53 @@
 <html>
 
 <head>
-    <title>Login</title>
+    <title>Friends</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
 <body>
-    <div class="friends-page">
-        <div class="user free">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            <h5>Test Name 1</h5>
-            <p>Status: Available</p>
+    <div class="friends">
+        <div class="add-form">
+            <div>
+                {{ form.username.label }}
+                {{ form.username(size=48, class_="form-control") }}
+                {{ form.search(class_="btn btn-primary btn-sm") }}
+            </div>
         </div>
-        <div class="user busy">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            <h5>Test Name 2</h5>
-            <p>Status: Busy</p>
-        </div>
-        <div class="user busy">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            <h5>Test Name 3</h5>
-            <p>Status: Busy</p>
-        </div>
-        <div class="user free">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            <h5>Test Name 4</h5>
-            <p>Status: Available</p>
-        </div>
-        <div class="user busy">
-            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
-            <h5>Test Name 5</h5>
-            <p>Status: Busy</p>
+
+        <div class="friends-page">
+            <div class="user free">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="">
+                <h5>Test Name 1</h5>
+                <p>Status: Available</p>
+            </div>
+            <div class="user busy">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="">
+                <h5>Test Name 2</h5>
+                <p>Status: Busy</p>
+            </div>
+            <div class="user busy">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="">
+                <h5>Test Name 3</h5>
+                <p>Status: Busy</p>
+            </div>
+            <div class="user free">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="">
+                <h5>Test Name 4</h5>
+                <p>Status: Available</p>
+            </div>
+            <div class="user busy">
+                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+                    alt="">
+                <h5>Test Name 5</h5>
+                <p>Status: Busy</p>
+            </div>
         </div>
     </div>
 </body>

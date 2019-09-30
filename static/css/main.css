@@ -73,11 +73,16 @@
 }
 
 /* FRIENDS PAGE */
-.friends-page{
+.friends{
+    height: fit-content;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.add-form{
+    padding-bottom: 50px;
+    text-align: center;
 }
 .friends-page .user{
     display: inline-block;

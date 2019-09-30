@@ -18,15 +18,11 @@ def login():
     form = LoginInput()
     return render_template('login.html', form=form)
 
-@app.route('/addfriend')
-def add():
-    form = AddFriend()
-    return render_template('addFriend.html', form=form)
-
 
 @app.route('/friends')
 def friends():
-    return render_template('friends.html')
+    form = AddFriend()
+    return render_template('friends.html', form=form)
 
 
 if __name__ == '__main__':
