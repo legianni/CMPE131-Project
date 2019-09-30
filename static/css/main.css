@@ -71,3 +71,26 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* FRIENDS PAGE */
+.friends-page{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.friends-page .user{
+    display: inline-block;
+    margin: 25px;
+}
+.friends-page .user img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.friends-page .free img{
+    border: 5px solid rgb(48, 199, 48);
+}
+.friends-page .busy img{
+    border: 5px solid rgb(243, 56, 39);
+}
