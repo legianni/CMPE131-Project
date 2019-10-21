@@ -64,12 +64,19 @@
     color: black;
 }
 
-/* LOGIN FORM CSS */
-.login-form{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+/* NAVBAR */
+.center{
+    display: flex;
+    justify-content: center;
+}
+.navbar a{
+    padding: 0px 6px;
+}
+
+/* CENTER FORM CSS */
+.center-form{
+    display: flex;
+    justify-content: center;;
 }
 
 /* FRIENDS PAGE */
