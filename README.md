@@ -1,5 +1,8 @@
 ## Connect 365
 ---
+**Running Application**:
+Execute the file "main.py"
+
 **Problem Statement**:
 
 Many students have trouble aligning their schedule with friends and finding the time to hang out. Determining the availability of your friends is even more difficult with larger groups, as you would have to either view all their schedules individually or message everyone in a group chat (which can be a hassle to do).

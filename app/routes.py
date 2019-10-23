@@ -4,7 +4,9 @@ from app import db
 from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import AddFriend
+from app.forms import CreateEventForm
 from app.models import User
+from app.models import Event
 from flask_login import current_user, login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -77,3 +79,19 @@ def friends():
     form = AddFriend()
     return render_template('friends.html', form=form)
 
+@app.route('/event/create', methods=['GET', 'POST'])
+def createEvent():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    form = CreateEventForm()
+    if form.validate_on_submit():
+        date_in = form.date.data.strftime('%Y/%m/%d')
+        startTime_in = form.startTime.data.strftime('%H:%M:%S')
+        endTime_in = form.endTime.data.strftime('%H:%M:%S')
+        event = Event(title=form.title.data, description=form.description.data, date=date_in, startTime=startTime_in, endTime=endTime_in)
+        db.create_all()
+        db.session.add(event)
+        db.session.commit()
+        flash('Congratulations, you have created an event!')
+        return redirect(url_for('index'))
+    return render_template('createEvent.html', title='Create Event', form=form)

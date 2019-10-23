@@ -4,6 +4,17 @@ from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(35), index=True)
+    description = db.Column(db.String(256), index=True)
+    date = db.Column(db.String(15), index=True)
+    startTime = db.Column(db.String(15), index=True)
+    endTime = db.Column(db.String(15), index=True)
+
+    def __repr__(self):
+        return '<Event {}>'.format(self.title)  
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
