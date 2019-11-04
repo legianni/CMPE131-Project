@@ -6,4 +6,12 @@
     {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
     {% endfor %}
+
+    <form action="/update/status" method="post">
+        {% if status %}
+            <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
+        {% else %}
+            <button type="submit" class=" btn btn-danger btn-sm">Status: Busy</button>
+        {% endif %}
+    </form>
 {% endblock %}:w

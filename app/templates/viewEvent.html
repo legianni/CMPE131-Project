@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<div class="d-flex justify-content-center">
+  <a class="btn btn-primary" href="{{ url_for('createEvent') }}">Create Event</a>
+</div>
+<body class = "bglight">
+{% for event in events %}
+
+  <div class="container">
+    <div class="col row-md-9">
+      <div class="card border-secondary text-secondary mb-3" style="max-width: 22rem;">
+        <div class="card-header"><font size=7>{{event}}</font></div>
+          <div class="card-body">
+            <h5 class="card-title"><strong><font size=5>Description:</strong> {{event.description}}</font></h5>
+            <p class="card-text">
+              <strong>Date:</strong> {{event.date}} </br>
+              <strong>From: </strong>{{event.startTime}} <strong>To:</strong> {{event.endTime}}
+            </p>
+           </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</body>
+
+
+
+{% endblock %}
