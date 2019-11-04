@@ -3,24 +3,17 @@ from app import db
 from app import login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-
-class Event(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(35), index=True)
-    description = db.Column(db.String(256), index=True)
-    date = db.Column(db.String(15), index=True)
-    startTime = db.Column(db.String(15), index=True)
-    endTime = db.Column(db.String(15), index=True)
-
-    def __repr__(self):
-        return '<Event {}>'.format(self.title)  
+ 
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(128), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    status = db.Column(db.Boolean, index=True)
+    schedule = db.Column(db.String(350), index=True, default="[[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]")
+    events = db.relationship('Event', backref='author', lazy='dynamic')
+
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -30,6 +23,18 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)    
+
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(35), index=True)
+    description = db.Column(db.String(256), index=True)
+    date = db.Column(db.String(256), index=True)
+    startTime = db.Column(db.String(256), index=True)
+    endTime = db.Column(db.String(256), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Event {}>'.format(self.title) 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
