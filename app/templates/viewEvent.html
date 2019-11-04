@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a class="btn btn-primary" href="{{ url_for('createEvent') }}"">Create Event</a>
+{% for e in events%}
+    <p>{{ e.title }}</p>
+    <p>{{ e.description }}</p>
+    <p>{{ e.date }}</p>
+    <p>{{ e.startTime }}</p>
+    <p>{{ e.endTime }}</p>
+{% endfor %}
+
+{% endblock %}

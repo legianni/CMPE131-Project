@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="landing d-flex justify-content-center align-items-center">
+        <h1>Easily connect with friends</h1>
+        <h5>View their schedule and availability with ease</h5>
+        <br>
+        <a class="btn btn-outline-light" href="{{ url_for('index') }}">Get Started!</a>
+    </div>
+    <div class="landing-features d-flex justify-content-center">
+        <h2>Never send another "When are you free?" message again</h2>
+        <h5>Determine a friend's availability with a few clicks</h5>
+
+        <div class="row">
+            <div class="col-md-3">
+                <i class="fa fa-paper-plane-o fa-3x"></i>
+                <h6>Don't waste time messaging your friend. Easily check on the go. Fast loading speeds and easy navigation.</h6>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-toggle-off fa-3x"></i>
+                <h6>View your friend's status. Red is busy and green is active.</h6>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-calendar fa-3x"></i>
+                <h6>View your friend's calendar for the week. Find their gap times, and adapt.</h6>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-leaf fa-3x"></i>
+                <h6>Flip over a new leaf and start using Connect 365 today!</h6>
+            </div>
+        </div>
+    </div>
+{% endblock %}:w
