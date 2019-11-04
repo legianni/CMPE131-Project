@@ -12,13 +12,16 @@
   <div class="container">
     <div class="row col-md-9">
       <div class="card border-info mb-3" style="max-width: 26rem;">
-        <div class="card-header">{{titleName}}</div>
+        <div class="card-header"></div>
           <div class="card-body text-info">
-            <h5 class="card-title">{{date}}</h5>
+            <h5 class="card-title"></h5>
             <p class="card-text">
-              {{countArray}}
-              <strong>Description:</strong> {{description}} </br>
-              From: {{startTime}} To: {{endTime}}
+              {% for i in value%}
+              {{value[i]}}
+              {% endfor %}
+
+              <strong>Description:</strong>  </br>
+              From:  To: 
             </p>
            </div>
         </div>

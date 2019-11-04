@@ -71,8 +71,17 @@ def register():
 
 @app.route('/calendar')
 def calendar():
-    return render_template('calendar.html')
-
+    users = User.query.all()
+    print(users)
+    '''
+    value = []
+    i = 0
+    while i < len(users):
+        userVal = User.query.get(i)
+        value[i] = userVal.email
+        i+=1
+    '''
+    return render_template('calendar.html', users = users, value = value)
 
 @app.route('/friends')
 def friends():
