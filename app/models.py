@@ -35,7 +35,7 @@ class Event(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Event {}>'.format(self.title) 
+        return '{}'.format(self.title) 
 
 class Friend(db.Model):
     id = db.Column(db.Integer, primary_key=True)
