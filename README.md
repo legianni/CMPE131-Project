@@ -20,3 +20,6 @@ The objective of our web application is to solve scheduling issues among friends
 - Option to enable notifications for matching availability with friends.
 - Ability to create events with friends.
 ---
+
+**Travis-Ci**
+https://travis-ci.com/legianni/CMPE131-Project.svg?branch=master
