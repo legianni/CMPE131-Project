@@ -1,88 +1,37 @@
-<html>
+{% extends "base.html" %}
+
+{% block content %}
 
 <head>
-    <title>Calendar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
-<body>
-    <div class="row calendar-box">
-        <div class="col-md-4 calendar-left">
-            <div class="row calendar-date">
-                September 27, 2019
-            </div>
-            <div class="row calendar-events">
-                <ul>
-                    <li>Event 1</li>
-                    <li>Event 2</li>
-                    <li>Event 3</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-8 calendar-right">
-            <div class="row calendar-month">
-                <button class="btn btn-light btn-sm">JAN</button>
-                <button class="btn btn-light btn-sm">FEB</button>
-                <button class="btn btn-light btn-sm">MAR</button>
-                <button class="btn btn-light btn-sm">APR</button>
-                <button class="btn btn-light btn-sm">MAY</button>
-                <button class="btn btn-light btn-sm">JUN</button>
-                <button class="btn btn-light btn-sm">JUL</button>
-                <button class="btn btn-light btn-sm">AUG</button>
-                <button class="btn btn-light btn-sm">SEP</button>
-                <button class="btn btn-light btn-sm">OCT</button>
-                <button class="btn btn-light btn-sm">NOV</button>
-                <button class="btn btn-light btn-sm">DEC</button>
-            </div>
-            <div class="row calendar-days">
-                <div class="col-md-1 calendar-day monday">
-                    <button class="btn btn-light btn-sm day">MON</button>
-                    {% for i in range(1, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day tuesday">
-                    <button class="btn btn-light btn-sm day">TUE</button>
-                    {% for i in range(2, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day wednesday">
-                    <button class="btn btn-light btn-sm day">WED</button>
-                    {% for i in range(3, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day thursday">
-                    <button class="btn btn-light btn-sm day">THU</button>
-                    {% for i in range(4, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day friday">
-                    <button class="btn btn-light btn-sm day">FRI</button>
-                    {% for i in range(5, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day saturday">
-                    <button class="btn btn-light btn-sm day">SAT</button>
-                    {% for i in range(6, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
-                <div class="col-md-1 calendar-day sunday">
-                    <button class="btn btn-light btn-sm day">SUN</button>
-                    {% for i in range(7, 32, 7) %}
-                    <button class="btn btn-dark btn-sm">{{ i }}</button>
-                    {% endfor %}
-                </div>
+<div class="d-flex justify-content-center">
+  <a class="btn btn-primary" href="{{ url_for('createEvent') }}">Create Event</a>
+</div>
+<body class = "bglight">
+{% for event in events %}
 
-            </div>
+  <div class="container">
+    <div class="col row-md-9">
+      <div class="card border-info mb-3" style="max-width: 22rem;">
+        <div class="card-header"></div>
+          <div class="card-body text-info">
+            <h5 class="card-title">{{event}}</h5>
+            <p class="card-text">
+              <strong>Description:</strong> {{event.description}} </br>
+              From: {{event.startTime}} To: {{event.endTime}}
+            </p>
+           </div>
         </div>
+      </div>
     </div>
+{% endfor %}
 </body>
 
-</html>
+
+
+{% endblock %}

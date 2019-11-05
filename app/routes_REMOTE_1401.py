@@ -79,13 +79,10 @@ def register():
 
 @app.route('/calendar')
 def calendar():
-    if not current_user.is_authenticated:
-        return redirect(url_for('login'))
-    # to view all events of a select user
-    events = current_user.events.all()
+    print("hello")
+    return render_template('calendar.html')
 
-    return render_template('calendar.html', title='View Events', events=events)
-
+# route to display friends
 @app.route('/friends')
 def friends():
     form = AddFriend()
