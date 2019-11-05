@@ -8,6 +8,7 @@ from app.forms import CreateEventForm
 from app.forms import ScheduleForm
 from app.models import User
 from app.models import Event
+from app.models import Friend
 from flask_login import current_user, login_user
 from flask_login import logout_user
 from flask_login import login_required
@@ -83,16 +84,47 @@ def calendar():
     return render_template('calendar.html')
 
 # route to display friends
-@app.route('/friends')
+@app.route('/friends', methods=['GET', 'POST'])
 def friends():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
     form = AddFriend()
-    # to get all the users use the command
-    # users = User.query.all()
-    # for user in users:
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            # checks if this user is already a friend
+            listOfFriends = Friend.query.filter_by(user_id=current_user.id).all()
+            print(listOfFriends)
+            isFriend = False
+            for friend in listOfFriends:
+                if friend.friend_username == user.username:
+                    isFriend = True
+        # if all cases are valid
+        if user and user != current_user:
+            if isFriend:
+                flash('Error. You are already friends with ' + user.username + '!')
+                return redirect(url_for('friends'))
+            else:
+                friend = Friend(author=current_user, friend_username=user.username, friend_id=user.id, friend_email=user.email)
+                db.create_all()
+                db.session.add(friend)
+                db.session.commit()
+                print(Friend.query.filter_by(user_id=current_user.id).all())
+                flash('Congratulations, you have added ' + user.username + '!')
+                return redirect(url_for('friends'))
+        else:
+            flash('Error. Please enter a valid username.')
+            return redirect(url_for('friends'))
 
+    # get all the friends of current user
+    friends = current_user.friends.all()
+    friendArr = []
+    for friend in friends:
+        user = User.query.filter_by(username=friend.friend_username).first()
+        friendArr.append([friend.friend_username, user.status])
     # display users in reverse alphabetical order
     # User.query.filter_by(User.username.desc()).all()
-    return render_template('friends.html', form=form)
+    return render_template('friends.html', form=form, friends=friendArr)
 
 # route to view the events of a user
 @app.route('/event/view', methods=['GET', 'POST'])
