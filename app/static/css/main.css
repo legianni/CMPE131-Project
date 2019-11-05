@@ -155,20 +155,26 @@ footer{
 }
 
 /* FRIENDS PAGE */
-.friends{
-    height: fit-content;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 .add-form{
-    padding-bottom: 50px;
+    padding: 80px 0px;
     text-align: center;
 }
+.add-form-content{
+    margin: 0px 5px;
+}
 .friends-page .user{
+    border: 0.2px solid black;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0.5px 0.5px 5px;
+    text-align: center;
     display: inline-block;
     margin: 25px;
+    transition: ease 0.3s; 
+}
+.friends-page .user:hover{
+    box-shadow: 0.5px 0.5px 15px;
+    cursor: pointer;
 }
 .friends-page .user img{
     height: 100px;
@@ -181,7 +187,9 @@ footer{
 .friends-page .busy img{
     border: 5px solid rgb(243, 56, 39);
 }
-
+.friends-page h5{
+    padding-top: 6px;
+}
 /* CREATE SCHEDULE CSS */
 .schedule-time:hover{
     cursor: pointer;

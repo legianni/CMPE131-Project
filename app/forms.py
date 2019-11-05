@@ -20,8 +20,8 @@ class CreateEventForm(FlaskForm):
     submit = SubmitField('Create Event')
 
 class AddFriend(FlaskForm):
-    username = StringField('Username')
-    search = SubmitField('Search')
+    username = StringField('Username', validators=[DataRequired()], description="Enter Friends Username")
+    search = SubmitField('Add')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
