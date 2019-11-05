@@ -13,7 +13,7 @@ class User(UserMixin, db.Model):
     status = db.Column(db.Boolean, index=True)
     schedule = db.Column(db.String(350), index=True, default="[[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1],[-1,-1,-1,-1,-1,-1,-1]]")
     events = db.relationship('Event', backref='author', lazy='dynamic')
-
+    friends = db.relationship('Friend', backref='author', lazy='dynamic')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -23,6 +23,7 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)    
+
 
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -35,6 +36,15 @@ class Event(db.Model):
 
     def __repr__(self):
         return '{}'.format(self.title) 
+
+class Friend(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    friend_username = db.Column(db.String(64), index=True, unique=True)
+    friend_email = db.Column(db.String(64), index=True, unique=True)
+    friend_id = db.Column(db.Integer, index=True, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    def __repr__(self):
+        return '<Friend {}>'.format(self.id) 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)

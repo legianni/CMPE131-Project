@@ -1,55 +1,37 @@
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Friends</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-
-<body>
+{% block content %}
     <div class="friends">
-        <div class="add-form">
-            <div>
-                {{ form.username.label }}
+        <div class="add-form d-flex justify-content-center align-items-center">
+            <form action="" method="post">
+                <div class="d-flex flex-row">
+                {{ form.hidden_tag() }}
+                <h4>Username: </h4>
                 {{ form.username(size=48, class_="form-control") }}
                 {{ form.search(class_="btn btn-primary btn-sm") }}
-            </div>
+                </div>
+            </form>
         </div>
 
-        <div class="friends-page">
-            <div class="user free">
+        <div class="row friends-page d-flex justify-content-center align-items-center">
+            {% for friend in friends %}
+                
+            {% if friend[1] == True %}
+            <div class="col-md-2 user free">
+            {% else %}
+            <div class="col-md-2 user busy">
+            {% endif %}
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     alt="">
-                <h5>Test Name 1</h5>
+                <h5>{{friend[0]}}</h5>
+                {% if friend[1] == True %}
                 <p>Status: Available</p>
-            </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 2</h5>
+                {% else %}
                 <p>Status: Busy</p>
+                {% endif %}
             </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 3</h5>
-                <p>Status: Busy</p>
-            </div>
-            <div class="user free">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 4</h5>
-                <p>Status: Available</p>
-            </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 5</h5>
-                <p>Status: Busy</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</body>
 
-</html>
+{% endblock %}
