@@ -173,7 +173,21 @@ def syncEvent():
     credentials = client.OAuth2Credentials.from_json(flask.session['credentials'])
     if credentials.access_token_expired:
         return flask.redirect(flask.url_for('oauth2callback'))
-    return flask.render_template('index.html')
+
+    #example event pull
+    service = build('calendar', 'v3', credentials)
+    now = datetime.datetime.utcnow().isoformat() + 'Z'
+    events_result = service.events().list(calendarId='primary', timeMin=now,
+                                        maxResults=10, singleEvents=True,
+                                        orderBy='startTime').execute()
+    events = events_result.get('items', [])
+    if not events:
+        return ('No upcoming events found.')
+    for event in events:
+        start = event['start'].get('dateTime', event['start'].get('date'))
+        
+
+    return render_template('googleapi.html')
 
 #Begin oauth callback route
 @app.route('/oauth2callback')
@@ -184,12 +198,12 @@ def oauth2callback():
       redirect_uri=flask.url_for('oauth2callback', _external=True))
   if 'code' not in flask.request.args:
     auth_uri = flow.step1_get_authorize_url()
-    return flask.redirect(auth_uri)
+    return redirect(auth_uri)
   else:
     auth_code = flask.request.args.get('code')
     credentials = flow.step2_exchange(auth_code)
     flask.session['credentials'] = credentials.to_json()
-    return flask.redirect(flask.url_for('index'))
+    return redirect(flask.url_for('syncEvents'))
 
 
 # route to display the schedule. users will be able to update their schedule here
