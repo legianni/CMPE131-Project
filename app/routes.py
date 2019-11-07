@@ -175,19 +175,15 @@ def syncEvent():
         return flask.redirect(flask.url_for('oauth2callback'))
 
     #example event pull
-    service = build('calendar', 'v3', credentials)
+    service = discovery.build('calendar', 'v3', credentials)
     now = datetime.datetime.utcnow().isoformat() + 'Z'
     events_result = service.events().list(calendarId='primary', timeMin=now,
                                         maxResults=10, singleEvents=True,
                                         orderBy='startTime').execute()
     events = events_result.get('items', [])
-    if not events:
-        return ('No upcoming events found.')
     for event in events:
         start = event['start'].get('dateTime', event['start'].get('date'))
-        
-
-    return render_template('googleapi.html')
+        return render_template('googleapi.html', events = events)
 
 #Begin oauth callback route
 @app.route('/oauth2callback')
@@ -203,7 +199,7 @@ def oauth2callback():
     auth_code = flask.request.args.get('code')
     credentials = flow.step2_exchange(auth_code)
     flask.session['credentials'] = credentials.to_json()
-    return redirect(flask.url_for('syncEvents'))
+    return redirect(flask.url_for('syncEvent'))
 
 
 # route to display the schedule. users will be able to update their schedule here
