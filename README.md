@@ -22,4 +22,4 @@ The objective of our web application is to solve scheduling issues among friends
 ---
 
 **Travis-Ci**
-https://travis-ci.com/legianni/CMPE131-Project.svg?branch=master
+[![Build Status](https://travis-ci.com/legianni/CMPE131-Project.svg?branch=master)](https://travis-ci.com/legianni/CMPE131-Project)
