@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="friends">
+    <div class="friends padding-top">
         <div class="add-form d-flex justify-content-center align-items-center">
             <form action="" method="post">
                 <div class="d-flex flex-row">
@@ -17,9 +17,9 @@
             {% for friend in friends %}
                 
             {% if friend[1] == True %}
-            <div class="col-md-2 user free">
+            <div class="card col-md-2 user free" style="width: 18rem;">
             {% else %}
-            <div class="col-md-2 user busy">
+            <div class="card col-md-2 user busy"  style="width: 18rem;">
             {% endif %}
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     alt="">

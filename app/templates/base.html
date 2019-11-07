@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
             <a class="navbar-brand" href="{{ url_for('landingPage') }}">Connect 365</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -77,3 +77,11 @@
     </footer>
     </body>
 </html>
+
+<script>
+        $(document).ready(function(){
+            $("#block-content").animate({
+                opacity: '1'
+            }, "slow")
+        })
+    </script>

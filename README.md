@@ -1,4 +1,5 @@
 ## Connect 365
+[![Build Status](https://travis-ci.com/legianni/CMPE131-Project.svg?branch=master)](https://travis-ci.com/legianni/CMPE131-Project)
 ---
 **Running Application**:
 Execute the file "main.py"

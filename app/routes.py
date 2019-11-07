@@ -155,7 +155,7 @@ def createEvent():
         db.session.add(event)
         db.session.commit()
         flash('Congratulations, you have created an event!')
-        return redirect(url_for('index'))
+        return redirect(url_for('viewEvent'))
     return render_template('createEvent.html', title='Create Event', form=form)
 
 # route to display the schedule. users will be able to update their schedule here
@@ -166,7 +166,7 @@ def createSchedule():
     form = ScheduleForm()
     if form.validate_on_submit():
         flash('Congratulations, you have updated your schedule!')
-        return redirect(url_for('index'))
+        return redirect(url_for('createSchedule'))
     user = User.query.filter_by(username=current_user.username).first()
     availability = user.schedule
     return render_template('createSchedule.html', title='Create Schedule', availability=availability, form=form)

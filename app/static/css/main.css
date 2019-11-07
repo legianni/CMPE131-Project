@@ -5,14 +5,21 @@ html{
     overflow-x: hidden;
 }
 body{
-    padding-top: 40px;
+    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
+    color: white;
+}
+.padding-top{
+    padding-top: 50px;
 }
 footer{
     height: 50px;
 }
-
+.navbar{
+    background-color: rgba(52, 58, 64, 0.267);
+}
 #block-content{
     min-height: 90%;
+    opacity: 0;
 }
 .flash-message{
     padding-top: 50px;
@@ -23,8 +30,16 @@ footer{
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
-    background-color: #343a40;
+    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
+    /*
+    background-image: url(http://cdn.lowgif.com/full/7753b991607c8954-simple-gif-wallpaper-6-gif-images-download.gif);
+    */
+    background-attachment: fixed;
+    background-position: center right;
     color: white;
+}
+#landing-headers, #landing-button{
+    opacity: 0;
 }
 .landing-features{
     color: black;
@@ -63,11 +78,11 @@ footer{
 
 /* LOGIN CSS */
 .login-page{
-    height: 80%;
+    height: 100%;
 }
 /* REGISTER CSS */
 .register-page{
-    height: 80%;
+    height: 100%;
 }
 /*  CALENDAR CSS */
 .calendar-box{
@@ -162,18 +177,23 @@ footer{
 .add-form-content{
     margin: 0px 5px;
 }
+.add-form h4{
+    margin: 5px;
+}
+.add-form input{
+    margin: 5px;
+}
 .friends-page .user{
-    border: 0.2px solid black;
     border-radius: 5px;
     padding: 20px;
-    box-shadow: 0.5px 0.5px 5px;
     text-align: center;
     display: inline-block;
     margin: 25px;
-    transition: ease 0.3s; 
+    color: black;
+    transition: ease 0.3s;
 }
 .friends-page .user:hover{
-    box-shadow: 0.5px 0.5px 15px;
+    box-shadow: 5px 5px 20px white;
     cursor: pointer;
 }
 .friends-page .user img{
@@ -190,7 +210,37 @@ footer{
 .friends-page h5{
     padding-top: 6px;
 }
+
+/* EVENT CSS */
+.view-event{
+    padding: 20px 0px;
+    margin: auto;
+}
+.view-event-row{
+    padding: 5px 20px;
+}
+.event-card{
+    transition: ease 0.3s;
+}
+.event-card:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 20px;
+}
+
 /* CREATE SCHEDULE CSS */
+#createSchedule{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+@media only screen and (max-width: 600px) {
+    #createSchedule{
+        display: block;
+        width: 100%;
+    }
+}
 .schedule-time:hover{
     cursor: pointer;
 }
@@ -200,9 +250,13 @@ footer{
 .available-time{
     background-color: green;
 }
+#schedule table{
+    border-collapse: separate;
+    border-spacing: 5px;
+}
 #schedule td{
-    border: 1px solid black;
     margin: 3px;
     padding: 8px;
     width: 105px;
+    border-radius: 5px;
 }
