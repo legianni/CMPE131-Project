@@ -30,19 +30,20 @@ footer{
     flex-direction: column;
     flex-wrap: wrap;
     text-align: center;
-    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
     /*
-    background-image: url(http://cdn.lowgif.com/full/7753b991607c8954-simple-gif-wallpaper-6-gif-images-download.gif);
+    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
     */
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://www.androidcentral.com/sites/androidcentral.com/files/styles/xlarge_wm_brw/public/article_images/2019/03/galaxy-s10e-blue-buttons.jpg?itok=P23ueKyN);
     background-attachment: fixed;
-    background-position: center right;
     color: white;
 }
 #landing-headers, #landing-button{
     opacity: 0;
 }
 .landing-features{
-    color: black;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    background-attachment: fixed;
+    color: white;
     height: 100%;
     flex-direction: column;
     text-align: center;
@@ -68,7 +69,7 @@ footer{
     color: rgb(0, 196, 0);
 }
 .fa-calendar{
-    color: rgb(27, 27, 27);
+    color: rgb(255, 255, 255);
     transition: ease 0.5s;
 }
 .fa-leaf{

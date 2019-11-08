@@ -6,6 +6,7 @@ from app.forms import RegistrationForm
 from app.forms import AddFriend
 from app.forms import CreateEventForm
 from app.forms import ScheduleForm
+from app.models import FriendRequest
 from app.models import User
 from app.models import Event
 from app.models import Friend
@@ -22,17 +23,7 @@ def landingPage():
 @app.route('/index')
 @login_required
 def index():
-    posts = [
-        {
-            'author': {'username': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html', title='Home', posts=posts, status=current_user.status)
+    return render_template('index.html', title='Home', status=current_user.status)
 
 # route to login
 @app.route('/login', methods=['GET', 'POST'])
@@ -109,12 +100,20 @@ def friends():
                 flash('Error. You are already friends with ' + user.username + '!')
                 return redirect(url_for('friends'))
             else:
+                '''
                 friend_request = FriendRequest(author=current_user, friend_username=user.username, friend_id=user.id, friend_email=user.email)
                 db.create_all()
                 db.session.add(friend_request)
                 db.session.commit()
                 print(Friend.query.filter_by(user_id=current_user.id).all())
                 flash('Congratulations, you have sent a friend request to ' + user.username + '!')
+                '''
+                friend = Friend(author=current_user, friend_username=user.username, friend_id=user.id, friend_email=user.email)
+                db.create_all()
+                db.session.add(friend)
+                db.session.commit()
+                print(Friend.query.filter_by(user_id=current_user.id).all())
+                flash('Congratulations, you have added ' + user.username + '!')
                 return redirect(url_for('friends'))
         else:
             flash('Error. Please enter a valid username.')
