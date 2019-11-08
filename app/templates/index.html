@@ -1,17 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <!-- current_user is a property of flask-login -->
-    <h1>Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
-
-    <form action="/update/status" method="post">
-        {% if status %}
-            <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
-        {% else %}
-            <button type="submit" class=" btn btn-danger btn-sm">Status: Busy</button>
-        {% endif %}
-    </form>
+    <div class="padding-top">
+        <!-- current_user is a property of flask-login -->
+        <h1>Hi, {{ current_user.username }}!</h1>
+        <form action="/update/status" method="post">
+            {% if status %}
+                <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
+            {% else %}
+                <button type="submit" class=" btn btn-danger btn-sm">Status: Busy</button>
+            {% endif %}
+        </form>
+    </div>
 {% endblock %}:w

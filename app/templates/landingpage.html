@@ -1,11 +1,16 @@
+
 {% extends "base.html" %}
 
 {% block content %}
     <div class="landing d-flex justify-content-center align-items-center">
-        <h1>Easily connect with friends</h1>
-        <h5>View their schedule and availability with ease</h5>
+        <div id="landing-headers">
+            <h1>Easily connect with friends</h1>
+            <h5>View their schedule and availability with ease</h5>
+        </div>
         <br>
-        <a class="btn btn-outline-light" href="{{ url_for('index') }}">Get Started!</a>
+        <div id="landing-button">
+            <a class="btn btn-outline-light" href="{{ url_for('index') }}">Get Started!</a>
+        </div>
     </div>
     <div class="landing-features d-flex justify-content-center">
         <h2>Never send another "When are you free?" message again</h2>
@@ -30,4 +35,17 @@
             </div>
         </div>
     </div>
-{% endblock %}:w
+
+
+    <script>
+        
+        $(document).ready(function(){
+            $("#landing-headers").animate({
+                opacity: '1'
+            }, "slow")
+            $("#landing-button").animate({
+                opacity: '1'
+            }, "slow")
+        })
+    </script>
+{% endblock %}
