@@ -241,7 +241,7 @@ def updateStatus():
     return redirect(url_for('index'))
 
 # DELETION
-# if you want to delete a user in the database do
+# if you want to deletqe a user in the database do
 # users = User.query.all()
 # for u in users:
 #   db.session.delete(u)

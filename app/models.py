@@ -39,12 +39,22 @@ class Event(db.Model):
 
 class Friend(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    friend_username = db.Column(db.String(64), index=True, unique=True)
-    friend_email = db.Column(db.String(64), index=True, unique=True)
-    friend_id = db.Column(db.Integer, index=True, unique=True)
+    friend_username = db.Column(db.String(64), index=True)
+    friend_email = db.Column(db.String(64), index=True)
+    friend_id = db.Column(db.Integer, index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
-        return '<Friend {}>'.format(self.id) 
+        return '<Friend {}>'.format(self.id)
+
+class FriendRequest(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    requester_username = db.Column(db.String(64), index=True)
+    requester_email = db.Column(db.String(64), index=True)
+    requester_id = db.Column(db.Integer, index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user_username = db.Column(db.String(64), index=True)
+    def __repr__(self):
+        return '<FriendRequest {}>'.format(self.body)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
