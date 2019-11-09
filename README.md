@@ -20,7 +20,30 @@ The objective of our web application is to solve scheduling issues among friends
 - See a friend’s calendar/schedule for any day in the week.
 - Option to enable notifications for matching availability with friends.
 - Ability to create events with friends.
----
+
+**Features**:
+- Log-in
+  Users will input their information and log-in into their account.
+- Log-out
+  Once finished using the website, users will be able to log out from their account.
+- Register
+  if the user does not have an account they will be able to register with a new account.
+- Create Events
+  When the user is logged in, they can create events or plans for the upcoming week/month/year.
+- View Events
+  Users will be able to see their events.
+- Delete Event
+  Users will be able to delete their events.
+- Set Status
+  When logged in, users can set their status as available or unavailable for their friends to see.
+- Add Friend
+  Users can add their friends.
+- Set Schedule
+  Users will be able to set their schedule by setting which hour of the day in the week they are available.
+- View Friend
+  Under the friends page, users will be able to see their added friends and availability status.
+
+  
 
 **Travis-Ci**
 [![Build Status](https://travis-ci.com/legianni/CMPE131-Project.svg?branch=master)](https://travis-ci.com/legianni/CMPE131-Project)
