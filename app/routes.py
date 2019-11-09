@@ -5,6 +5,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import AddFriend
 from app.forms import CreateEventForm
+from app.forms import DeleteEventForm
 from app.forms import ScheduleForm
 from app.models import FriendRequest
 from app.models import User
@@ -156,6 +157,26 @@ def createEvent():
         flash('Congratulations, you have created an event!')
         return redirect(url_for('viewEvent'))
     return render_template('createEvent.html', title='Create Event', form=form)
+
+# route to delete an event
+@app.route('/event/delete', methods=['GET', 'POST'])
+def deleteEvent():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    form = DeleteEventForm()
+    if form.validate_on_submit():
+        print(current_user)
+        eventTitle = Event.query.filter_by(title=form.title.data).first()
+        print(eventTitle)
+        if eventTitle:   
+            db.session.delete(eventTitle)
+            db.session.commit()
+            print(Event.query.filter_by(user_id=current_user.id).all())
+            return redirect(url_for('viewEvent'))
+        else:
+            flash('Please enter a valid and existing event')
+            return redirect(url_for('deleteEvent'))
+    return render_template('deleteEvent.html',title='Delete event', form=form)     
 
 # route to display the schedule. users will be able to update their schedule here
 @app.route('/schedule/create', methods=['GET', 'POST'])
