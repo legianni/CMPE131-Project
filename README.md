@@ -22,25 +22,25 @@ The objective of our web application is to solve scheduling issues among friends
 - Ability to create events with friends.
 
 **Features**:
-- Log-in
+- Log-in:
   Users will input their information and log-in into their account.
-- Log-out
+- Log-out:
   Once finished using the website, users will be able to log out from their account.
-- Register
+- Register:
   if the user does not have an account they will be able to register with a new account.
-- Create Events
+- Create Events:
   When the user is logged in, they can create events or plans for the upcoming week/month/year.
-- View Events
+- View Events:
   Users will be able to see their events.
-- Delete Event
+- Delete Event:
   Users will be able to delete their events.
-- Set Status
+- Set Status:
   When logged in, users can set their status as available or unavailable for their friends to see.
-- Add Friend
+- Add Friend:
   Users can add their friends.
-- Set Schedule
+- Set Schedule:
   Users will be able to set their schedule by setting which hour of the day in the week they are available.
-- View Friend
+- View Friend:
   Under the friends page, users will be able to see their added friends and availability status.
 
   
