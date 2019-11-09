@@ -2,4 +2,3 @@ __pycache__
 app/__pycache__/
 app.db
 add.db.orig
-.idea/
