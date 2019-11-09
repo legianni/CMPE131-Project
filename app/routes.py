@@ -5,6 +5,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import AddFriend
 from app.forms import CreateEventForm
+from app.forms import DeleteEventForm
 from app.forms import ScheduleForm
 from app.models import User
 from app.models import Event
@@ -161,6 +162,31 @@ def createEvent():
         flash('Congratulations, you have created an event!')
         return redirect(url_for('index'))
     return render_template('createEvent.html', title='Create Event', form=form)
+
+# route to delete an event
+@app.route('/event/delete', methods=['GET', 'POST'])
+def deleteEvent():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    form = DeleteEventForm()
+    if form.validate_on_submit():
+        print(current_user)
+        eventTitle = Event.query.filter_by(title=form.title.data).first()
+        print(eventTitle)
+        if eventTitle:
+            # event = Event(author=current_user, title= deleteEvent.title, description=deleteEvent.description, 
+            # date=deleteEvent.date, startTime=deleteEvent.startTime, endTime=deleteEvent.endTime)
+            db.session.delete(eventTitle)
+            db.session.commit()
+            print(Event.query.filter_by(user_id=current_user.id).all())
+            return redirect(url_for('index'))
+        # event = Event.query.filter_by(user_id=current_user.id).get(1)
+        # for e in event:
+        #     print(event) 
+
+        # db.session.delete(event)
+        # db.session.commit()
+    return render_template('deleteEvent.html',title='Delete event', form=form)    
 
 #google api authorization
 @app.route('/event/sync')
