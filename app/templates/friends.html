@@ -1,26 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="friends padding-top">
-        <div class="add-form d-flex justify-content-center align-items-center">
-            <form action="" method="post">
-                <div class="d-flex flex-row">
+<div class="friends padding-top">
+    <div class="add-form d-flex justify-content-center align-items-center">
+        <form action="" method="post">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="d-flex flex-row">
                 {{ form.hidden_tag() }}
                 <h4>Username: </h4>
                 {{ form.username(size=48, class_="form-control") }}
                 {{ form.search(class_="btn btn-primary btn-sm") }}
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
+    </div>
 
-        <div class="row friends-page d-flex justify-content-center align-items-center">
-            {% for friend in friends %}
-                
-            {% if friend[1] == True %}
-            <div class="card col-md-2 user free" style="width: 18rem;">
+    <div class="row friends-page d-flex justify-content-center align-items-center">
+        {% for friend in friends %}
+
+        {% if friend[1] == True %}
+        <div class="card col-md-2 user free" style="width: 18rem;">
             {% else %}
-            <div class="card col-md-2 user busy"  style="width: 18rem;">
-            {% endif %}
+            <div class="card col-md-2 user busy" style="width: 18rem;">
+                {% endif %}
                 <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
                     alt="">
                 <h5>{{friend[0]}}</h5>
@@ -34,4 +41,4 @@
         </div>
     </div>
 
-{% endblock %}
+    {% endblock %}

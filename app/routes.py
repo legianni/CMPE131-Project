@@ -220,7 +220,6 @@ def updateStatus():
     user.status = not user.status
     db.session.commit()
     print(user.status)
-    flash('Congratulations, you have updated your status!')
     return redirect(url_for('index'))
 
 # DELETION

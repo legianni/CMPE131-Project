@@ -1,46 +1,47 @@
 <html>
-    <head>
-        {% if title %}
-        <title>{{ title }} Connect365</title>
-        {% else %}
-        <title>Connect365</title>
-        {% endif %}
-        <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
-            <a class="navbar-brand" href="{{ url_for('landingPage') }}">Connect 365</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto d-flex align-items-start">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                    </li>
-                    {% if not current_user.is_anonymous %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('createSchedule') }}">Schedule</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('friends') }}">Friends</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('viewEvent') }}">Events</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Settings</a>
-                    </li>
-                    {% endif %}
-                </ul>
-              <div class="my-2 my-lg-0 d-flex align-items-end">
+
+<head>
+    {% if title %}
+    <title>{{ title }} Connect365</title>
+    {% else %}
+    <title>Connect365</title>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg  navbar-dark fixed-top">
+        <a class="navbar-brand" href="{{ url_for('landingPage') }}">Connect 365</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto d-flex align-items-start">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                {% if not current_user.is_anonymous %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('createSchedule') }}">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('friends') }}">Friends</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('viewEvent') }}">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Settings</a>
+                </li>
+                {% endif %}
+            </ul>
+            <div class="my-2 my-lg-0 d-flex align-items-end">
                 <ul class="navbar-nav">
                     {% if current_user.is_anonymous %}
                     <li class="nav-item">
@@ -55,33 +56,26 @@
                     </li>
                     {% endif %}
                 </ul>
-                </div>
             </div>
-        </nav>
-        <div class="d-flex justify-content-center">
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                <div class="flash-message">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-            {% endwith %}
         </div>
-        <div id="block-content">
-            {% block content %}{% endblock %}
-        </div>
-        
+    </nav>
+
+    <div id="block-content">
+        {% block content %}{% endblock %}
+    </div>
+
     </div>
     <footer class="d-flex justify-content-center align-items-center">
         <h6>Connect 365 - Copyright © 2019</h6>
     </footer>
-    </body>
+</body>
+
 </html>
 
 <script>
-        $(document).ready(function(){
-            $("#block-content").animate({
-                opacity: '1'
-            }, "slow")
-        })
-    </script>
+    $(document).ready(function () {
+        $("#block-content").animate({
+            opacity: '1'
+        }, "slow")
+    })
+</script>
