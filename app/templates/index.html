@@ -1,15 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="padding-top">
-        <!-- current_user is a property of flask-login -->
-        <h1>Hi, {{ current_user.username }}!</h1>
-        <form action="/update/status" method="post">
-            {% if status %}
-                <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
-            {% else %}
-                <button type="submit" class=" btn btn-danger btn-sm">Status: Busy</button>
+<div class="padding-top">
+    <!-- current_user is a property of flask-login -->
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <form action="/update/status" method="post">
+        {% if status %}
+        <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
+        {% else %}
+        <button type="submit" class=" btn btn-danger btn-sm">Status: Busy</button>
+        {% endif %}
+    </form>
+</div>
+
+<div class="row friends-page d-flex justify-content-center align-items-center">
+    {% for friend in friends %}
+
+    {% if friend[1] == True %}
+    <div class="card col-md-2 user free" style="width: 18rem;">
+        {% else %}
+        <div class="card col-md-2 user busy" style="width: 18rem;">
             {% endif %}
-        </form>
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="">
+            <h5>{{friend[0]}}</h5>
+            {% if friend[1] == True %}
+            <p>Status: Available</p>
+            {% else %}
+            <p>Status: Busy</p>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
+</div>
 {% endblock %}:w

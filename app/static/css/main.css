@@ -213,6 +213,12 @@ footer{
 .friends-page h5{
     padding-top: 6px;
 }
+.friend-request{
+    margin: 6px;
+}
+.friend-request .btn{
+    margin: 6px 0px;
+}
 
 /* EVENT CSS */
 .view-event{

@@ -26,7 +26,13 @@ def landingPage():
 @app.route('/index')
 @login_required
 def index():
-    return render_template('index.html', title='Home', status=current_user.status)
+    # get all the friends of current user
+    friends = current_user.friends.all()
+    friendArr = []
+    for friend in friends:
+        user = User.query.filter_by(username=friend.friend_username).first()
+        friendArr.append([friend.friend_username, user.status])
+    return render_template('index.html', title='Home', status=current_user.status, friends=friendArr)
 
 # route to login
 @app.route('/login', methods=['GET', 'POST'])
@@ -89,6 +95,7 @@ def friends():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     form = AddFriend()
+    sentFriendRequest = False
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user:
@@ -100,41 +107,72 @@ def friends():
             for friend in listOfFriends:
                 if friend.friend_username == user.username:
                     isFriend = True
+            # checks if friend request has already been sent
+            checkFriendRequest = FriendRequest.query.filter_by(
+                requester_username=user.username).all()
+            for friend in checkFriendRequest:
+                if friend.friend_username == current_user.username:
+                    sentFriendRequest = True
         # if all cases are valid
         if user and user != current_user:
             if isFriend:
                 flash('Error. You are already friends with ' + user.username + '!')
                 return redirect(url_for('friends'))
+            elif sentFriendRequest:
+                flash(
+                    'Error. You have already sent a friend request to ' + user.username + '!')
+                return redirect(url_for('friends'))
             else:
-                '''
-                friend_request = FriendRequest(author=current_user, friend_username=user.username, friend_id=user.id, friend_email=user.email)
+                friend_request = FriendRequest(
+                    author=user, requester_username=user.username, friend_username=current_user.username, request_status=True)
                 db.create_all()
                 db.session.add(friend_request)
                 db.session.commit()
-                print(Friend.query.filter_by(user_id=current_user.id).all())
-                flash('Congratulations, you have sent a friend request to ' + user.username + '!')
-                '''
-                friend = Friend(author=current_user, friend_username=user.username,
-                                friend_id=user.id, friend_email=user.email)
-                db.create_all()
-                db.session.add(friend)
-                db.session.commit()
-                print(Friend.query.filter_by(user_id=current_user.id).all())
-                flash('Congratulations, you have added ' + user.username + '!')
+                flash('You sent a friend request to ' + user.username + '!')
                 return redirect(url_for('friends'))
         else:
             flash('Error. Please enter a valid username.')
             return redirect(url_for('friends'))
 
-    # get all the friends of current user
-    friends = current_user.friends.all()
-    friendArr = []
-    for friend in friends:
-        user = User.query.filter_by(username=friend.friend_username).first()
-        friendArr.append([friend.friend_username, user.status])
-    # display users in reverse alphabetical order
-    # User.query.filter_by(User.username.desc()).all()
-    return render_template('friends.html', form=form, friends=friendArr)
+    # get all incoming friend requests
+    friend_requests = current_user.friend_request.filter_by(
+        requester_username=current_user.username).all()
+    friendReq = []
+    for friend in friend_requests:
+        if friend.request_status:
+            friendReq.append(friend.friend_username)
+    print(friendReq)
+    return render_template('friends.html', form=form, friends=friendReq)
+
+# route to accept/decline friend request
+@app.route('/friends/request', methods=['GET', 'POST'])
+def updateFriendRequest():
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    if request.method == 'POST':
+        data = request.json
+        req_data = str(data).split('-')
+        print(req_data)
+        # update friends & friend request
+        friendReq = FriendRequest.query.filter_by(
+            requester_username=current_user.username).all()
+        for friend in friendReq:
+            if friend.requester_username == current_user.username and friend.friend_username == req_data[0]:
+                print(friend.friend_username)
+                db.session.delete(friend)
+                db.session.commit()
+        if req_data[1] == 'accept':
+            friend = Friend(author=current_user, friend_username=req_data[0])
+            temp_friend = User.query.filter_by(username=data[0]).all()
+            friend = Friend(
+                author=temp_friend[0], friend_username=current_user.username)
+            db.create_all()
+            db.session.add(friend)
+            db.session.commit()
+            flash('You have accepted ' + req_data[0] + "'s friend request!")
+            return redirect(url_for('index'))
+        flash('You have declined ' + req_data[0] + "'s friend request!")
+    return redirect(url_for('index'))
 
 # route to view the events of a user
 @app.route('/event/view', methods=['GET', 'POST'])
