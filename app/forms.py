@@ -19,6 +19,13 @@ class CreateEventForm(FlaskForm):
     endTime = TimeField('End Time', validators=[DataRequired()])
     submit = SubmitField('Create Event')
 
+class EditEventForm(FlaskForm):
+    description = TextAreaField('Description', validators=[DataRequired()])
+    date = DateField('Date', validators=[DataRequired(), DateRange(min=date.today())])
+    startTime = TimeField('Start Time', validators=[DataRequired()])
+    endTime = TimeField('End Time', validators=[DataRequired()])
+    Submit = SubmitField('Edit Event')
+    
 class DeleteEventForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     submit = SubmitField('Delete Event')

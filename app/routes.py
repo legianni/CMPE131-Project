@@ -5,6 +5,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import AddFriend
 from app.forms import CreateEventForm
+from app.forms import EditEventForm
 from app.forms import DeleteEventForm
 from app.forms import ScheduleForm
 from app.models import User
@@ -174,19 +175,35 @@ def deleteEvent():
         eventTitle = Event.query.filter_by(title=form.title.data).first()
         print(eventTitle)
         if eventTitle:
-            # event = Event(author=current_user, title= deleteEvent.title, description=deleteEvent.description, 
-            # date=deleteEvent.date, startTime=deleteEvent.startTime, endTime=deleteEvent.endTime)
+            
             db.session.delete(eventTitle)
             db.session.commit()
             print(Event.query.filter_by(user_id=current_user.id).all())
             return redirect(url_for('index'))
-        # event = Event.query.filter_by(user_id=current_user.id).get(1)
-        # for e in event:
-        #     print(event) 
-
-        # db.session.delete(event)
-        # db.session.commit()
+    
     return render_template('deleteEvent.html',title='Delete event', form=form)    
+
+# route to edit event
+@app.route('/event/edit/<string:Title>', methods=['GET','POST'])
+def editEvent(Title):
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    event=Event.query.filter_by(title=Title).first()
+    form = EditEventForm()
+    if form.validate_on_submit():
+        date_in = form.date.data.strftime('%m/%d/%Y')
+        startTime_in = form.startTime.data.strftime('%H:%M')
+        endTime_in = form.endTime.data.strftime('%H:%M')
+        print(current_user)
+        event.description = form.description.data
+        event.date_in = date_in
+        event.startTime_in = startTime_in
+        event.endTime_in = endTime_in
+        db.session.commit()
+        flash('Congratulations, you have created an event!')
+        return redirect(url_for('viewEvent')
+    return render_template('editEvent.html', title='Edit Event', form=form)
+        
 
 #google api authorization
 @app.route('/event/sync')
