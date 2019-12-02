@@ -1,7 +1,165 @@
 /* To update CSS, clear cache or open the server in incognito */
 /* static css files are automatically  stored in cache */
 
+html{
+    overflow-x: hidden;
+}
+body{
+    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
+    color: white;
+}
+.padding-top{
+    padding-top: 100px;
+}
+footer{
+    height: 50px;
+}
+.navbar{
+    background-color: rgba(52, 58, 64, 0.267);
+}
+#block-content{
+    min-height: 90%;
+    opacity: 0;
+}
+.flash-message{
+    padding-top: 50px;
+}
+/* LANDING PAGE CSS */
+.landing{
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    /*
+    background-image: url(http://cdn.miscellaneoushi.com/1920x1080/20121018/minimalistic%20dark%20mac%20textures%20digital%20art%20dark%20background%20style%201920x1080%20wallpaper_www.miscellaneoushi.com_20.jpg);
+    */
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://www.androidcentral.com/sites/androidcentral.com/files/styles/xlarge_wm_brw/public/article_images/2019/03/galaxy-s10e-blue-buttons.jpg?itok=P23ueKyN);
+    background-attachment: fixed;
+    color: white;
+    background-size: cover;
+}
+#landing-headers, #landing-button{
+    opacity: 0;
+}
+.landing-features{
+    /*
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    background-attachment: fixed;
+    */
+    background: white;
+    color: black;
+    height: 110%;
+    flex-direction: column;
+    text-align: center;
+    background-size: cover;
+}
+.landing-features .row{
+    padding-top: 120px;
+}
+.landing-features img{
+    height: 650px;
+    width: 650px;
+}
+#contact-us{
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    background-attachment: fixed;
+    text-align: center;
+}
+#contact form {
+    width: 70%;
+    display: inline-block;
+}
+.fa{
+    padding-bottom: 15px;
+    font-size: 3em;
+}
+.fa:hover{
+    font-size: 3.5em !important;
+}
+.fa-paper-plane-o{
+    color: rgb(93, 93, 255);
+    transition: ease 0.5s;
+}
+.fa-toggle-off{
+    color: rgb(214, 0, 0);
+    transition: ease 0.5s;
+}
+.fa-toggle-off:hover{
+    color: rgb(0, 196, 0);
+}
+.fa-calendar{
+    color: rgb(0, 0, 0);
+    transition: ease 0.5s;
+}
+.fa-leaf{
+    color: rgb(0, 196, 0);
+    transition: ease 0.5s;
+}
 
+/* HOME PAGE CSS */
+@media only screen and (min-width: 1000px) {
+    .full_modal-dialog {
+        width: 78% !important;
+        height: 92% !important;
+        min-width: 78% !important;
+        min-height: 92% !important;
+        max-width: 78% !important;
+        max-height: 92% !important;
+        padding: 0 !important;
+    }
+    .full_modal-content {
+        height: 99% !important;
+        min-height: 99% !important;
+        max-height: 99% !important;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .full_modal-dialog {
+        width: 98% !important;
+        height: 92% !important;
+        min-width: 98% !important;
+        min-height: 92% !important;
+        max-width: 98% !important;
+        max-height: 92% !important;
+        padding: 0 !important;
+    }
+    .full_modal-content {
+        height: 99% !important;
+        min-height: 99% !important;
+        max-height: 99% !important;
+    }
+    #scheduleModalBody td{
+        margin: 1px;
+        padding: 4px;
+        width: 70px;
+        border-radius: 5px;
+    }
+}
+#scheduleModal .modal-body{
+    overflow-x: auto;
+}
+#scheduleModalBody table{
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+#scheduleModalBody td{
+    margin: 3px;
+    padding: 8px;
+    width: 105px;
+    border-radius: 5px;
+}
+
+/* LOGIN CSS */
+.login-page{
+    height: 90%;
+}
+/* REGISTER CSS */
+.register-page{
+    height: 90%;
+}
 /*  CALENDAR CSS */
 .calendar-box{
     height: 65%;
@@ -65,6 +223,14 @@
 }
 
 /* NAVBAR */
+
+.nav-item a{
+    color: white !important;
+    transition: ease 0.5s;
+}
+.nav-item a:hover{
+    font-size: 18px;
+}
 .center{
     display: flex;
     justify-content: center;
@@ -80,20 +246,31 @@
 }
 
 /* FRIENDS PAGE */
-.friends{
-    height: fit-content;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 .add-form{
-    padding-bottom: 50px;
+    padding: 80px 0px;
     text-align: center;
 }
+.add-form-content{
+    margin: 0px 5px;
+}
+.add-form h4{
+    margin: 5px;
+}
+.add-form input{
+    margin: 5px;
+}
 .friends-page .user{
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
     display: inline-block;
     margin: 25px;
+    color: black;
+    transition: ease 0.3s;
+}
+.friends-page .user:hover{
+    box-shadow: 5px 5px 20px white;
+    cursor: pointer;
 }
 .friends-page .user img{
     height: 100px;
@@ -105,4 +282,64 @@
 }
 .friends-page .busy img{
     border: 5px solid rgb(243, 56, 39);
+}
+.friends-page h5{
+    padding-top: 6px;
+}
+.friend-request{
+    margin: 6px;
+}
+.friend-request .btn{
+    margin: 6px 0px;
+}
+
+/* EVENT CSS */
+.view-event{
+    padding: 20px 0px;
+    margin: auto;
+}
+.view-event-row{
+    padding: 5px 20px;
+}
+.event-card{
+    transition: ease 0.3s;
+}
+.event-card:hover{
+    cursor: pointer;
+    box-shadow: 5px 5px 20px;
+}
+
+/* CREATE SCHEDULE CSS */
+#createSchedule{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+}
+@media only screen and (max-width: 600px) {
+    #createSchedule{
+        display: block;
+        width: 100%;
+    }
+}
+.schedule-time:hover{
+    cursor: pointer;
+}
+.busy-time{
+    background-color: red;
+}
+.available-time{
+    background-color: green;
+}
+#schedule table{
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+
+#schedule td{
+    margin: 3px;
+    padding: 8px;
+    width: 105px;
+    border-radius: 5px;
 }

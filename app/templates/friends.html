@@ -1,55 +1,58 @@
-<html>
+{% extends "base.html" %}
 
-<head>
-    <title>Friends</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-
-<body>
-    <div class="friends">
-        <div class="add-form">
-            <div>
-                {{ form.username.label }}
+{% block content %}
+<div class="friends padding-top">
+    <div class="add-form d-flex justify-content-center align-items-center">
+        <form action="" method="post">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class="d-flex flex-row">
+                {{ form.hidden_tag() }}
+                <h4>Username: </h4>
                 {{ form.username(size=48, class_="form-control") }}
                 {{ form.search(class_="btn btn-primary btn-sm") }}
             </div>
-        </div>
-
-        <div class="friends-page">
-            <div class="user free">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 1</h5>
-                <p>Status: Available</p>
-            </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 2</h5>
-                <p>Status: Busy</p>
-            </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 3</h5>
-                <p>Status: Busy</p>
-            </div>
-            <div class="user free">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 4</h5>
-                <p>Status: Available</p>
-            </div>
-            <div class="user busy">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                    alt="">
-                <h5>Test Name 5</h5>
-                <p>Status: Busy</p>
-            </div>
-        </div>
+        </form>
     </div>
-</body>
 
-</html>
+
+
+    <div class="row d-flex justify-content-center align-items-center">
+        {% for friend in friends %}
+        <div class="card col-md-2 friend-request" style="width: 18rem; color: black; text-align: center;">
+            <h5>{{ friend[0] }}</h5>
+            <button class="btn req-btn btn-primary btn-sm" id="{{ friend[0] }}-accept">Accept</button>
+            <button class="btn req-btn btn-danger btn-sm" id="{{ friend[0] }}-decline">Decline</button>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+            $(".req-btn").click(function (e) {
+                console.log(this.id)
+                var js_data = JSON.stringify(this.id);
+                $.ajax({
+                    url: '/friends/request',
+                    type: 'post',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: js_data
+                }).done(function () {
+                    location.reload();
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    location.reload();
+                });
+            })
+        })
+
+    </script>
+
+    {% endblock %}
