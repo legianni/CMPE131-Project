@@ -1,30 +1,36 @@
-
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="login-page d-flex justify-content-center align-items-center">
-        <form action="" method="post">
-            <h1>Sign In</h1>
-            {{ form.hidden_tag() }}
-            <div>
-                {{ form.username.label }}
-                {{ form.username(class_="form-control") }}
-            </div>
-            <div>
-                {{ form.password.label }}
-                {{ form.password(class_="form-control") }}
-            </div>
-            <div>
-                {{ form.remember_me.label }}
-                {{ form.remember_me }}
-            </div>
-            <div>
-                {{ form.submit(class_="btn btn-primary") }}
-            </div>
-            <div>
-                <br>
-                <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-            </div>
-        </form>
-    </div>
+<div class="login-page d-flex justify-content-center align-items-center padding-top">
+    <form action="" method="post">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <h1>Sign In</h1>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.username.label }}
+            {{ form.username(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password(class_="form-control") }}
+        </div>
+        <div>
+            {{ form.remember_me.label }}
+            {{ form.remember_me }}
+        </div>
+        <div>
+            {{ form.submit(class_="btn btn-primary") }}
+        </div>
+        <div>
+            <br>
+            <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+        </div>
+    </form>
+</div>
 {% endblock %}

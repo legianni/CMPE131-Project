@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="Delete events">
+    <div class="add-form d-flex justify-content-center align-items-center">
+        <form action="" method="post">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {{form.hidden_tag()}}
+            <h4>Event: </h4>
+            {{form.title(size=48, class_="form-control")}}
+            {{form.submit(class_="btn btn-primary btn-sm")}}
+        </form>
+    </div>
+
+</div>
+{% endblock %}

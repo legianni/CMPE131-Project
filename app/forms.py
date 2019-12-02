@@ -19,9 +19,13 @@ class CreateEventForm(FlaskForm):
     endTime = TimeField('End Time', validators=[DataRequired()])
     submit = SubmitField('Create Event')
 
+class DeleteEventForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()], description="Enter Event to Delete")
+    submit = SubmitField('Delete Event')
+
 class AddFriend(FlaskForm):
-    username = StringField('Username')
-    search = SubmitField('Search')
+    username = StringField('Username', validators=[DataRequired()], description="Enter Friends Username")
+    search = SubmitField('Add')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
