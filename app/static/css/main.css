@@ -9,7 +9,7 @@ body{
     color: white;
 }
 .padding-top{
-    padding-top: 50px;
+    padding-top: 100px;
 }
 footer{
     height: 50px;
@@ -42,10 +42,13 @@ footer{
     opacity: 0;
 }
 .landing-features{
+    /*
     background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
     background-attachment: fixed;
-    color: white;
-    height: 100%;
+    */
+    background: white;
+    color: black;
+    height: 110%;
     flex-direction: column;
     text-align: center;
     background-size: cover;
@@ -53,8 +56,25 @@ footer{
 .landing-features .row{
     padding-top: 120px;
 }
+.landing-features img{
+    height: 650px;
+    width: 650px;
+}
+#contact-us{
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://images.unsplash.com/photo-1526045612212-70caf35c14df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80);
+    background-attachment: fixed;
+    text-align: center;
+}
+#contact form {
+    width: 70%;
+    display: inline-block;
+}
 .fa{
     padding-bottom: 15px;
+    font-size: 3em;
 }
 .fa:hover{
     font-size: 3.5em !important;
@@ -71,12 +91,65 @@ footer{
     color: rgb(0, 196, 0);
 }
 .fa-calendar{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition: ease 0.5s;
 }
 .fa-leaf{
     color: rgb(0, 196, 0);
     transition: ease 0.5s;
+}
+
+/* HOME PAGE CSS */
+@media only screen and (min-width: 1000px) {
+    .full_modal-dialog {
+        width: 78% !important;
+        height: 92% !important;
+        min-width: 78% !important;
+        min-height: 92% !important;
+        max-width: 78% !important;
+        max-height: 92% !important;
+        padding: 0 !important;
+    }
+    .full_modal-content {
+        height: 99% !important;
+        min-height: 99% !important;
+        max-height: 99% !important;
+    }
+}
+@media only screen and (max-width: 990px) {
+    .full_modal-dialog {
+        width: 98% !important;
+        height: 92% !important;
+        min-width: 98% !important;
+        min-height: 92% !important;
+        max-width: 98% !important;
+        max-height: 92% !important;
+        padding: 0 !important;
+    }
+    .full_modal-content {
+        height: 99% !important;
+        min-height: 99% !important;
+        max-height: 99% !important;
+    }
+    #scheduleModalBody td{
+        margin: 1px;
+        padding: 4px;
+        width: 70px;
+        border-radius: 5px;
+    }
+}
+#scheduleModal .modal-body{
+    overflow-x: auto;
+}
+#scheduleModalBody table{
+    border-collapse: separate;
+    border-spacing: 5px;
+}
+#scheduleModalBody td{
+    margin: 3px;
+    padding: 8px;
+    width: 105px;
+    border-radius: 5px;
 }
 
 /* LOGIN CSS */
@@ -263,6 +336,7 @@ footer{
     border-collapse: separate;
     border-spacing: 5px;
 }
+
 #schedule td{
     margin: 3px;
     padding: 8px;

@@ -16,6 +16,7 @@ from flask_login import logout_user
 from flask_login import login_required
 from flask import request
 from werkzeug.urls import url_parse
+import ast
 
 
 @app.route('/')
@@ -248,6 +249,15 @@ def updateSchedule():
         user.schedule = new_schedule
         db.session.commit()
     return redirect(url_for('index'))
+
+# route used to retrieve schedule of a user
+@app.route('/get/schedule/<string:user>', methods=['GET'])
+def getSchedule(user):
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    if request.method == 'GET':
+        user = User.query.filter_by(username=user).first()
+        return user.schedule
 
 # route used to update the status of a user [BUSY = red or FREE = green]
 @app.route('/update/status', methods=['GET', 'POST'])

@@ -3,11 +3,7 @@
 {% block content %}
 
 <div class="padding-top">
-  <div class="view-event d-flex justify-content-center">
-    <a class="btn btn-primary" href="{{ url_for('createEvent') }}">Create Event</a>
-    <a class="btn btn-primary" href="{{url_for('deleteEvent') }}">Delete Event</a>
-  </div>
-  <div class="bglight">
+  <div class="d-flex justify-content-center">
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -15,6 +11,13 @@
     {% endfor %}
     {% endif %}
     {% endwith %}
+  </div>
+  <div class="view-event d-flex justify-content-center">
+    <a class="btn btn-primary" href="{{ url_for('createEvent') }}">Create Event</a>
+    <a class="btn btn-primary" href="{{url_for('deleteEvent') }}">Delete Event</a>
+  </div>
+
+  <div class="bglight">
     <div class="row view-event-row">
       {% for event in events %}
       <div class="col-md-3 col-sm-6">

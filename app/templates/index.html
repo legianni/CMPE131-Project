@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="padding-top">
+<div class="padding-top d-flex justify-content-center align-items-center">
     <!-- current_user is a property of flask-login -->
     <h1>Hi, {{ current_user.username }}!</h1>
+</div>
+<div class="d-flex justify-content-center align-items-center">
     <form action="/update/status" method="post">
         {% if status %}
         <button type="submit" class=" btn btn-success btn-sm">Status: Available</button>
@@ -28,8 +30,75 @@
             {% else %}
             <p>Status: Busy</p>
             {% endif %}
+            <button id="{{friend[0]}}" class="btn view-schedule-btn btn-primary btn-sm">View Schedule</button>
         </div>
+
         {% endfor %}
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade " id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" style="color: black;">
+    <div class="modal-dialog modal-lg full_modal-dialog" role="document">
+        <div class="modal-content full_modal-content" style="color: black;">
+            <div class="modal-header ">
+                <h5 class="modal-title" id="scheduleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-center align-items-center">
+                <div id="scheduleModalBody"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    days = ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    time = ["8AM", "9AM", "10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM"]
+
+    $(document).ready(function () {
+        $(".view-schedule-btn").click(function (e) {
+            schedule_calendar = ""
+            console.log(e.target.id)
+            title = "<h3>" + e.target.id + "'s Schedule</h3>"
+            document.getElementById("scheduleModalLabel").innerHTML = title
+            var get_url = '/get/schedule/' + e.target.id
+            $.ajax({
+                url: get_url,
+                type: 'get'
+            }).done(function (result) {
+                var json = result.replace(/([^\[\],\s]+)/g, '"$&"');
+                var array = JSON.parse(json);
+                // create the schedule
+                schedule_calendar += "<table id='schedule-table' style='text-align: center; color: black;'>"
+                schedule_calendar += "<tr>"
+                // generate the days
+                for (var i = 0; i < days.length; i++) {
+                    schedule_calendar += "<th>" + days[i] + "</th>"
+                }
+                // generate the hours
+                for (var j = 0; j < time.length - 1; j++) {
+                    schedule_calendar += "<tr><td>" + time[j] + "</td>"
+                    for (var k = 0; k < 7; k++) {
+                        if (array[j][k] == -1) {
+                            schedule_calendar += "<td class='schedule-time busy-time' id='" + j + "-" + k + "'></td>"
+                        } else {
+                            schedule_calendar += "<td class='schedule-time available-time' id='" + j + "-" + k + "'></td>"
+                        }
+                    }
+                    schedule_calendar += "</tr>"
+                }
+                schedule_calendar += "</table>"
+                $("#scheduleModalBody").html(schedule_calendar)
+                $('#scheduleModal').modal('show');
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                console.log("fail: ", textStatus, errorThrown);
+            });
+
+        })
+    })
+
+</script>
 {% endblock %}:w
