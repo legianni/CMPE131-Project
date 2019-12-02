@@ -1,16 +1,22 @@
-
 {% extends "base.html" %}
 
 {% block content %}
-    
+
 <div id="createSchedule" class="padding-top">
   <form onsubmit="updateSchedule()" method="post">
-      {{ form.hidden_tag() }}
-      <div id="schedule">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="flash-message">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {{ form.hidden_tag() }}
+    <div id="schedule">
 
-      </div>
-      
-  
+    </div>
+
+
     <div class="d-flex justify-content-center align-items-center">
       {{ form.submit(class_="btn btn-primary") }}
     </div>
@@ -18,71 +24,71 @@
 </div>
 
 <script>
-    days = ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    time = ["8AM", "9AM", "10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM"]
-    availability = {{ availability }}
+  days = ["Time", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  time = ["8AM", "9AM", "10AM", "11AM", "12AM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM"]
+  availability = {{ availability }}
+  console.log(availability)
+
+  updateSchedule = () => {
+    var js_data = JSON.stringify(availability);
+    $.ajax({
+      url: '/update/schedule',
+      type: 'post',
+      contentType: 'application/json',
+      dataType: 'json',
+      data: js_data
+    }).done(function (result) {
+      console.log(result);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+      console.log("fail: ", textStatus, errorThrown);
+    });
+  }
+  schedule_calendar = ""
+  hover = false
+  updateTime = (id) => {
+    console.log(id)
+    // update color on schedule
+    // update array
+    var x, y
+    x = parseInt(id)
+    for (var i = 0; i < id.length; i++) { if (id[i] == "-") { y = Math.abs(parseInt(id.slice(i))) } }
+    if (availability[x][y] == -1) {
+      availability[x][y] = 1
+      document.getElementById(id).className = "available-time"
+    } else {
+      availability[x][y] = -1
+      document.getElementById(id).className = "busy-time"
+    }
+    // add function to update database if submit
     console.log(availability)
+  }
 
-    updateSchedule = () => {
-      var js_data = JSON.stringify(availability);
-      $.ajax({                        
-          url: '/update/schedule',
-          type : 'post',
-          contentType: 'application/json',
-          dataType : 'json',
-          data : js_data
-      }).done(function(result) {
-          console.log(result);
-      }).fail(function(jqXHR, textStatus, errorThrown) {
-          console.log("fail: ",textStatus, errorThrown);
-      });
-    }
-    schedule_calendar = ""
-    hover = false
-    updateTime = (id) => {
-      console.log(id)
-      // update color on schedule
-      // update array
-      var x, y
-      x = parseInt(id)
-      for(var i=0; i<id.length; i++){if(id[i] == "-"){ y = Math.abs(parseInt(id.slice(i))) }}
-      if(availability[x][y] == -1){
-        availability[x][y] = 1
-        document.getElementById(id).className = "available-time"
-      }else{
-        availability[x][y] = -1
-        document.getElementById(id).className = "busy-time"
-      }
-      // add function to update database if submit
-      console.log(availability)
-    }
-
-    $(document).ready(function(){
-      $(".schedule-time").click(function(e){
-        updateTime(e.target.id)
-      })
+  $(document).ready(function () {
+    $(".schedule-time").click(function (e) {
+      updateTime(e.target.id)
     })
+  })
 
-    schedule_calendar += "<table id='schedule-table' style='text-align: center;'>"
-    schedule_calendar += "<tr>"
-    // generate the days
-    for(var i=0; i<days.length; i++){
-      schedule_calendar += "<th>" + days[i] + "</th>"
-    }
-    // generate the hours
-    for(var j=0; j<time.length-1; j++){
-      schedule_calendar += "<tr><td>" + time[j] + "</td>"
-      for(var k=0; k<7; k++){
-        if(availability[j][k] == -1){
-          schedule_calendar += "<td class='schedule-time busy-time' id='" + j + "-" + k + "'></td>"
-        }else{
-          schedule_calendar += "<td class='schedule-time available-time' id='" + j + "-" + k + "'></td>"
-        }
+  schedule_calendar += "<table id='schedule-table' style='text-align: center;'>"
+  schedule_calendar += "<tr>"
+  // generate the days
+  for (var i = 0; i < days.length; i++) {
+    schedule_calendar += "<th>" + days[i] + "</th>"
+  }
+  // generate the hours
+  for (var j = 0; j < time.length - 1; j++) {
+    schedule_calendar += "<tr><td>" + time[j] + "</td>"
+    for (var k = 0; k < 7; k++) {
+      if (availability[j][k] == -1) {
+        schedule_calendar += "<td class='schedule-time busy-time' id='" + j + "-" + k + "'></td>"
+      } else {
+        schedule_calendar += "<td class='schedule-time available-time' id='" + j + "-" + k + "'></td>"
       }
-
-      schedule_calendar += "</tr>"
     }
-    schedule_calendar += "</table>"
-    document.getElementById("schedule").innerHTML = schedule_calendar
+
+    schedule_calendar += "</tr>"
+  }
+  schedule_calendar += "</table>"
+  document.getElementById("schedule").innerHTML = schedule_calendar
 </script>
 {% endblock %}
