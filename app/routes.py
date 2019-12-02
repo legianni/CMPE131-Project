@@ -153,6 +153,7 @@ def updateFriendRequest():
     if request.method == 'POST':
         data = request.json
         req_data = str(data).split('-')
+        print("here")
         print(req_data)
         # update friends & friend request
         friendReq = FriendRequest.query.filter_by(
@@ -164,7 +165,7 @@ def updateFriendRequest():
                 db.session.commit()
         if req_data[1] == 'accept':
             friend = Friend(author=current_user, friend_username=req_data[0])
-            temp_friend = User.query.filter_by(username=data[0]).all()
+            temp_friend = User.query.filter_by(username=req_data[0]).all()
             friend = Friend(
                 author=temp_friend[0], friend_username=current_user.username)
             db.create_all()
