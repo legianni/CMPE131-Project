@@ -7,6 +7,10 @@
             <h1>Edit Event</h1>
             {{ form.hidden_tag() }}
             <div>
+                {{ form.title.label }}
+                {{ form.title(class_="form-control") }}
+            </div>
+            <div>
                 {{ form.description.label }}
                 {{ form.description(class_="form-control", cols="5", rows="5") }}
             </div>

@@ -184,24 +184,26 @@ def deleteEvent():
     return render_template('deleteEvent.html',title='Delete event', form=form)    
 
 # route to edit event
-@app.route('/event/edit/<string:Title>', methods=['GET','POST'])
-def editEvent(Title):
+@app.route('/event/edit/<string:id>', methods=['GET','POST'])
+def editEvent(id):
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    event=Event.query.filter_by(title=Title).first()
+    
     form = EditEventForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit():        
         date_in = form.date.data.strftime('%m/%d/%Y')
         startTime_in = form.startTime.data.strftime('%H:%M')
         endTime_in = form.endTime.data.strftime('%H:%M')
         print(current_user)
+        event = Event.query.filter_by(id = id).join(User).filter_by(username=current_user.username).first()
+        event.title = form.title.data
         event.description = form.description.data
-        event.date_in = date_in
-        event.startTime_in = startTime_in
-        event.endTime_in = endTime_in
+        event.date = date_in
+        event.startTime = startTime_in
+        event.endTime = endTime_in
         db.session.commit()
-        flash('Congratulations, you have created an event!')
-        return redirect(url_for('viewEvent')
+        flash('Event editted')
+        return redirect(url_for('viewEvent'))
     return render_template('editEvent.html', title='Edit Event', form=form)
         
 

@@ -26,7 +26,7 @@
               <strong>From: </strong>{{event.startTime}} <strong>To:</strong> {{event.endTime}}
               <div class="delete">
                 <a class="btn btn-primary" href="{{url_for('deleteEvent')}}">Delete</a>
-                <a class="btn btn-primary" href="{{url_for('editEvent', Title=event)}}">Edit</a>
+                <a class="btn btn-primary" href="{{url_for('editEvent', id=event.id)}}">Edit</a>
               </div>
             </p>
            </div>
