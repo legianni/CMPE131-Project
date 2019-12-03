@@ -230,22 +230,14 @@ def editEvent(id):
     return render_template('editEvent.html', title='Edit Event', form=form)
 
 # route to delete an event
-@app.route('/event/delete', methods=['GET', 'POST'])
-def deleteEvent():
+@app.route('/event/delete/<int:id>', methods=['GET', 'POST'])
+def deleteEvent(id):
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    form = DeleteEventForm()
-    if form.validate_on_submit():
-        eventTitle = Event.query.filter_by(title=form.title.data).first()
-        if eventTitle:
-            db.session.delete(eventTitle)
-            db.session.commit()
-            print(Event.query.filter_by(user_id=current_user.id).all())
-            return redirect(url_for('viewEvent'))
-        else:
-            flash('Please re-enter the event title')
-            return redirect(url_for('deleteEvent'))
-    return render_template('deleteEvent.html', title='Delete event', form=form)
+    event = Event.query.filter_by(id=id).first()
+    db.session.delete(event)
+    db.session.commit()
+    return redirect(url_for('viewEvent'))
 
 # route to display the schedule. users will be able to update their schedule here
 @app.route('/schedule/create', methods=['GET', 'POST'])
