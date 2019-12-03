@@ -154,6 +154,7 @@ def updateFriendRequest():
     if request.method == 'POST':
         data = request.json
         req_data = str(data).split('-')
+        print("here")
         print(req_data)
         # update friends & friend request
         friendReq = FriendRequest.query.filter_by(
@@ -165,7 +166,7 @@ def updateFriendRequest():
                 db.session.commit()
         if req_data[1] == 'accept':
             friend = Friend(author=current_user, friend_username=req_data[0])
-            temp_friend = User.query.filter_by(username=data[0]).all()
+            temp_friend = User.query.filter_by(username=req_data[0]).all()
             friend = Friend(
                 author=temp_friend[0], friend_username=current_user.username)
             db.create_all()
@@ -224,27 +225,20 @@ def editEvent(id):
         event.startTime = startTime_in
         event.endTime = endTime_in
         db.session.commit()
-        flash('Event editted')
+        flash('Event edited')
         return redirect(url_for('viewEvent'))
     return render_template('editEvent.html', title='Edit Event', form=form)
 
 # route to delete an event
-@app.route('/event/delete', methods=['GET', 'POST'])
-def deleteEvent():
+@app.route('/event/delete/<int:id>', methods=['GET', 'POST'])
+def deleteEvent(id):
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    form = DeleteEventForm()
-    if form.validate_on_submit():
-        eventTitle = Event.query.filter_by(title=form.title.data).first()
-        if eventTitle:
-            db.session.delete(eventTitle)
-            db.session.commit()
-            print(Event.query.filter_by(user_id=current_user.id).all())
-            return redirect(url_for('viewEvent'))
-        else:
-            flash('Please re-enter the event title')
-            return redirect(url_for('deleteEvent'))
-    return render_template('deleteEvent.html', title='Delete event', form=form)
+    event = Event.query.filter_by(id=id).first()
+    db.session.delete(event)
+    db.session.commit()
+    flash('Event deleted')
+    return redirect(url_for('viewEvent'))
 
 # route to display the schedule. users will be able to update their schedule here
 @app.route('/schedule/create', methods=['GET', 'POST'])

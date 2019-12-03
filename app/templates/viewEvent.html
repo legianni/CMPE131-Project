@@ -34,7 +34,7 @@
               <strong>From: </strong>{{event.startTime}} <strong>To:</strong> {{event.endTime}}
             </p>
             <div>
-                <a class="btn btn-primary" href="{{url_for('deleteEvent')}}">Delete</a>
+                <a class="btn btn-primary delete-btn" id="{{event.id}}" style="color: white;">Delete</a>
                 <a class="btn btn-primary" href="{{url_for('editEvent', id=event.id)}}">Edit</a>
               </div>
           </div>
@@ -44,5 +44,22 @@
     </div>
   </div>
 </div>
+
+<script>
+
+$(document).ready(function () {
+    $(".delete-btn").click(function (e) {
+        console.log(this.id)
+        $.ajax({
+            url: '/event/delete/'+this.id,
+            type: 'post'
+        }).done(function () {
+            location.reload();
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            location.reload();
+        });
+    })
+})
+</script>
 
 {% endblock %}
