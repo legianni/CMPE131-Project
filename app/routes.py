@@ -1,20 +1,9 @@
 from flask import render_template, flash, redirect, url_for
-from app import app
-from app import db
-from app.forms import LoginForm
-from app.forms import RegistrationForm
-from app.forms import AddFriend
-from app.forms import CreateEventForm
-from app.forms import EditEventForm
-from app.forms import DeleteEventForm
-from app.forms import ScheduleForm
-from app.models import FriendRequest
-from app.models import User
-from app.models import Event
-from app.models import Friend
-from flask_login import current_user, login_user
-from flask_login import logout_user
-from flask_login import login_required
+from flask import current_app as app
+from . import db
+from .forms import LoginForm, RegistrationForm, AddFriend, CreateEventForm, EditEventForm, DeleteEventForm, ScheduleForm
+from .models import FriendRequest, User, Event, Friend
+from flask_login import current_user, login_user, logout_user, login_required
 from flask import request
 from werkzeug.urls import url_parse
 import ast
@@ -28,6 +17,11 @@ def landingPage():
 @app.route('/index')
 @login_required
 def index():
+    """Main Home Page
+    
+    :return: Displays the user status and friends
+
+    """
     # get all the friends of current user
     friends = current_user.friends.all()
     friendArr = []
@@ -39,6 +33,11 @@ def index():
 # route to login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """Login Page
+    
+    :return: Page for users to log into their account
+
+    """
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
@@ -61,12 +60,22 @@ def login():
 # route to logout
 @app.route('/logout')
 def logout():
+    """Logout
+    
+    :return: Function used to log out the current user
+
+    """
     logout_user()
     return redirect(url_for('index'))
 
 # route to register a user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    """Register Page
+    
+    :return: Page for new users to register for an account
+
+    """
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RegistrationForm()
@@ -81,19 +90,14 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-
-@app.route('/calendar')
-def calendar():
-    if not current_user.is_authenticated:
-        return redirect(url_for('login'))
-    # to view all events of a select user
-    events = current_user.events.all()
-
-    return render_template('calendar.html', title='View Events', events=events)
-
 # route to display friends
 @app.route('/friends', methods=['GET', 'POST'])
 def friends():
+    """Friends Page
+    
+    :return: Page for users to send friend requests
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     form = AddFriend()
@@ -149,6 +153,11 @@ def friends():
 # route to accept/decline friend request
 @app.route('/friends/request', methods=['GET', 'POST'])
 def updateFriendRequest():
+    """Friend Request Function
+    
+    :return: Function to accept or decline an incoming friend request.
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     if request.method == 'POST':
@@ -180,6 +189,11 @@ def updateFriendRequest():
 # route to view the events of a user
 @app.route('/event/view', methods=['GET', 'POST'])
 def viewEvent():
+    """View Event Page
+    
+    :return: View the current user's events
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     # to view all events of a select user
@@ -189,6 +203,11 @@ def viewEvent():
 # route to create an event
 @app.route('/event/create', methods=['GET', 'POST'])
 def createEvent():
+    """Create Event Page
+    
+    :return: Create events (title, description, date, start and end time) via a form
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     form = CreateEventForm()
@@ -207,8 +226,15 @@ def createEvent():
     return render_template('createEvent.html', title='Create Event', form=form)
 
 # route to edit event
-@app.route('/event/edit/<string:id>', methods=['GET','POST'])
+@app.route('/event/edit/<int:id>', methods=['GET','POST'])
 def editEvent(id):
+    """Edit Event Function
+    
+    :return: Edits and updates the event with id of 'id'
+    :param id: Id of the event you want to edit
+    :type id: int
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     
@@ -232,6 +258,13 @@ def editEvent(id):
 # route to delete an event
 @app.route('/event/delete/<int:id>', methods=['GET', 'POST'])
 def deleteEvent(id):
+    """Delete Event Function
+    
+    :return: Deletes the event with id of 'id'
+    :param id: Id of the event you want to delete
+    :type id: int
+
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     event = Event.query.filter_by(id=id).first()
@@ -243,6 +276,11 @@ def deleteEvent(id):
 # route to display the schedule. users will be able to update their schedule here
 @app.route('/schedule/create', methods=['GET', 'POST'])
 def createSchedule():
+    """Edit/Create Schedule Function
+    
+    :return: Users will be allowed to edit/create their schedule here.
+    
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     form = ScheduleForm()
@@ -256,6 +294,11 @@ def createSchedule():
 # route used to update the schedule of a user. This uses AJAX calls to retrieve data from the template
 @app.route('/update/schedule', methods=['GET', 'POST'])
 def updateSchedule():
+    """Update Schedule Function
+    
+    :return: Uses AJAX calls to retrieve changed schedule data and updates the database
+    
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     if request.method == 'POST':
@@ -269,6 +312,13 @@ def updateSchedule():
 # route used to retrieve schedule of a user
 @app.route('/get/schedule/<string:user>', methods=['GET'])
 def getSchedule(user):
+    """Get Schedule Function
+    
+    :return: Gets the schedule of the user that is passed in via function parameter
+    :param user: User to retrieve schedule
+    :type user: string
+    
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     if request.method == 'GET':
@@ -278,6 +328,11 @@ def getSchedule(user):
 # route used to update the status of a user [BUSY = red or FREE = green]
 @app.route('/update/status', methods=['GET', 'POST'])
 def updateStatus():
+    """Update Status
+    
+    :return: Function used to update the current user's status
+    
+    """
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     user = User.query.filter_by(username=current_user.username).first()
@@ -285,9 +340,3 @@ def updateStatus():
     db.session.commit()
     print(user.status)
     return redirect(url_for('index'))
-
-# DELETION
-# if you want to delete a user in the database do
-# users = User.query.all()
-# for u in users:
-#   db.session.delete(u)

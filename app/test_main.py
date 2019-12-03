@@ -1,4 +1,5 @@
 from flask import Flask
+from app import create_app
 from app.models import User
 from app.models import Event
 from app.models import Friend
@@ -24,7 +25,6 @@ def new_event():
     event = Event(id=1, title="test title", description="test description",
                       date="12/02/2019", startTime="08:30", endTime="11:15")
     return event
-
 
 # Test 1: Validating New User
 def test_new_user(new_user):
@@ -79,5 +79,6 @@ def test_edit_event(new_event):
     assert new_event.date == "12/05/2020"
     assert new_event.startTime == "12:00"
     assert new_event.endTime == "18:50"
+
 
 # https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/
