@@ -5,6 +5,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.forms import AddFriend
 from app.forms import CreateEventForm
+from app.forms import EditEventForm
 from app.forms import DeleteEventForm
 from app.forms import ScheduleForm
 from app.models import FriendRequest
@@ -204,6 +205,29 @@ def createEvent():
         return redirect(url_for('viewEvent'))
     return render_template('createEvent.html', title='Create Event', form=form)
 
+# route to edit event
+@app.route('/event/edit/<string:id>', methods=['GET','POST'])
+def editEvent(id):
+    if not current_user.is_authenticated:
+        return redirect(url_for('login'))
+    
+    form = EditEventForm()
+    if form.validate_on_submit():        
+        date_in = form.date.data.strftime('%m/%d/%Y')
+        startTime_in = form.startTime.data.strftime('%H:%M')
+        endTime_in = form.endTime.data.strftime('%H:%M')
+        print(current_user)
+        event = Event.query.filter_by(id = id).join(User).filter_by(username=current_user.username).first()
+        event.title = form.title.data
+        event.description = form.description.data
+        event.date = date_in
+        event.startTime = startTime_in
+        event.endTime = endTime_in
+        db.session.commit()
+        flash('Event editted')
+        return redirect(url_for('viewEvent'))
+    return render_template('editEvent.html', title='Edit Event', form=form)
+
 # route to delete an event
 @app.route('/event/delete', methods=['GET', 'POST'])
 def deleteEvent():
@@ -211,16 +235,14 @@ def deleteEvent():
         return redirect(url_for('login'))
     form = DeleteEventForm()
     if form.validate_on_submit():
-        print(current_user)
         eventTitle = Event.query.filter_by(title=form.title.data).first()
-        print(eventTitle)
         if eventTitle:
             db.session.delete(eventTitle)
             db.session.commit()
             print(Event.query.filter_by(user_id=current_user.id).all())
             return redirect(url_for('viewEvent'))
         else:
-            flash('Please enter a valid and existing event')
+            flash('Please re-enter the event title')
             return redirect(url_for('deleteEvent'))
     return render_template('deleteEvent.html', title='Delete event', form=form)
 

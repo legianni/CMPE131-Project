@@ -14,7 +14,6 @@
   </div>
   <div class="view-event d-flex justify-content-center">
     <a class="btn btn-primary" href="{{ url_for('createEvent') }}">Create Event</a>
-    <a class="btn btn-primary" href="{{url_for('deleteEvent') }}">Delete Event</a>
   </div>
 
   <div class="bglight">
@@ -34,6 +33,10 @@
               <strong>Date:</strong> {{event.date}} </br>
               <strong>From: </strong>{{event.startTime}} <strong>To:</strong> {{event.endTime}}
             </p>
+            <div>
+                <a class="btn btn-primary" href="{{url_for('deleteEvent')}}">Delete</a>
+                <a class="btn btn-primary" href="{{url_for('editEvent', id=event.id)}}">Edit</a>
+              </div>
           </div>
         </div>
       </div>
