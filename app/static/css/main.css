@@ -150,6 +150,9 @@ footer{
 #scheduleModal .modal-body{
     overflow-x: auto;
 }
+#scheduleModalBody{
+    height: 100%;
+}
 #scheduleModalBody table{
     border-collapse: separate;
     border-spacing: 5px;
