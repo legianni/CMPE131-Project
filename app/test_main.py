@@ -3,8 +3,9 @@ from app.models import User
 from app.models import Event
 from app.models import Friend
 from app.models import FriendRequest
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 import pytest
-import request
  
 @pytest.fixture(scope='module')
 def new_user():
@@ -20,7 +21,7 @@ def new_user1():
 
 @pytest.fixture(scope='module')
 def new_event():
-    event = Event(title="test title", description="test description",
+    event = Event(id=1, title="test title", description="test description",
                       date="12/02/2019", startTime="08:30", endTime="11:15")
     return event
 
@@ -66,7 +67,17 @@ def test_user_status(new_user):
     new_user.status = 0 # sets to busy
     assert new_user.status == 0
 
-# Test 8: Testing Route
-
+# Test 8: Test Edit Event
+def test_edit_event(new_event):
+    new_event.title = "testing"
+    new_event.description = "hello"
+    new_event.date = "12/05/2020"
+    new_event.startTime = "12:00"
+    new_event.endTime = "18:50"
+    assert new_event.title == "testing"
+    assert new_event.description == "hello"
+    assert new_event.date == "12/05/2020"
+    assert new_event.startTime == "12:00"
+    assert new_event.endTime == "18:50"
 
 # https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/

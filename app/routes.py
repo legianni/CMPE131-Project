@@ -225,7 +225,7 @@ def editEvent(id):
         event.startTime = startTime_in
         event.endTime = endTime_in
         db.session.commit()
-        flash('Event editted')
+        flash('Event edited')
         return redirect(url_for('viewEvent'))
     return render_template('editEvent.html', title='Edit Event', form=form)
 
@@ -237,6 +237,7 @@ def deleteEvent(id):
     event = Event.query.filter_by(id=id).first()
     db.session.delete(event)
     db.session.commit()
+    flash('Event deleted')
     return redirect(url_for('viewEvent'))
 
 # route to display the schedule. users will be able to update their schedule here
