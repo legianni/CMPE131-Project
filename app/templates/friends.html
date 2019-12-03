@@ -25,9 +25,9 @@
     <div class="row d-flex justify-content-center align-items-center">
         {% for friend in friends %}
         <div class="card col-md-2 friend-request" style="width: 18rem; color: black; text-align: center;">
-            <h5>{{ friend[0] }}</h5>
-            <button class="btn req-btn btn-primary btn-sm" id="{{ friend[0] }}-accept">Accept</button>
-            <button class="btn req-btn btn-danger btn-sm" id="{{ friend[0] }}-decline">Decline</button>
+            <h5>{{ friend }}</h5>
+            <button class="btn req-btn btn-primary btn-sm" id="{{ friend }}-accept">Accept</button>
+            <button class="btn req-btn btn-danger btn-sm" id="{{ friend }}-decline">Decline</button>
         </div>
         {% endfor %}
     </div>
