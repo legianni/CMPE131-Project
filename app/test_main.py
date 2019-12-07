@@ -12,6 +12,9 @@ import pytest
 
 @pytest.fixture(scope='module')
 def test_client():
+    """
+    Creates a test client for unit testing.
+    """
     flask_app = create_app(Config)
     testing_client = flask_app.test_client()
     ctx = flask_app.app_context()
@@ -24,6 +27,9 @@ def test_client():
 
 @pytest.fixture(scope='module')
 def new_user():
+    """
+    Creates a test user 1.
+    """
     user = User(email='TESTING123@gmail.com', username='TESTING123')
     user.set_password('TESTING')
     return user
@@ -31,6 +37,9 @@ def new_user():
 
 @pytest.fixture(scope='module')
 def new_user1():
+    """
+    Creates a test user 2.
+    """
     user1 = User(email='TESTING321@gmail.com', username='TESTING321')
     user1.set_password('TESTING')
     return user1
@@ -38,6 +47,9 @@ def new_user1():
 
 @pytest.fixture(scope='module')
 def new_event():
+    """
+    Creates a test event.
+    """
     event = Event(id=1, title="test title", description="test description",
                   date="12/02/2019", startTime="08:30", endTime="11:15")
     return event
@@ -46,6 +58,9 @@ def new_event():
 
 
 def test_new_user(new_user):
+    """
+    Tests if a new user can be created.
+    """
     assert new_user.username == 'TESTING123'
     assert new_user.email == 'TESTING123@gmail.com'
     assert new_user.password_hash != 'TESTING'
@@ -54,6 +69,9 @@ def test_new_user(new_user):
 
 
 def test_user_id(new_user):
+    """
+    Validates a new user's id.
+    """
     new_user.id = 17
     assert isinstance(new_user.get_id(), str)
     assert not isinstance(new_user.get_id(), int)
@@ -63,6 +81,9 @@ def test_user_id(new_user):
 
 
 def test_user_authentication(new_user):
+    """
+    Tests if a new user is authenticated.
+    """
     assert new_user.is_authenticated == True
 
 
@@ -70,6 +91,9 @@ def test_user_authentication(new_user):
 
 
 def test_friend_request(new_user, new_user1):
+    """
+    Tests if the friend request system's request status works.
+    """
     friend_request = FriendRequest(author=new_user, requester_username=new_user.username,
                                    friend_username=new_user1.username, request_status=True)
     assert friend_request.request_status == True
@@ -78,6 +102,9 @@ def test_friend_request(new_user, new_user1):
 
 
 def test_friend_system(new_user, new_user1):
+    """
+    Tests if two users can add each other correctly.
+    """
     friend1 = Friend(author=new_user, friend_username=new_user1.username)
     friend2 = Friend(author=new_user1, friend_username=new_user.username)
     assert friend1.friend_username == new_user1.username and friend2.friend_username == new_user.username
@@ -86,6 +113,9 @@ def test_friend_system(new_user, new_user1):
 
 
 def test_user_status(new_user):
+    """
+    Tests if a user can set their status.
+    """
     new_user.status = 0  # sets to busy
     assert new_user.status == 0
 
@@ -93,6 +123,9 @@ def test_user_status(new_user):
 
 
 def test_delete_event(new_event, test_client):
+    """
+    Tests if the event deletion route works.
+    """
     res = test_client.post('/event/delete/'+str(new_event.id))
     assert res.status_code == 302
 
@@ -100,6 +133,9 @@ def test_delete_event(new_event, test_client):
 
 
 def test_valid_login_logout(test_client):
+    """
+    Tests if the login and logout routes work.
+    """
     response = test_client.post('/login',
                                 data=dict(email='TESTING123@gmail.com',
                                           password='TESTING123'),
@@ -113,5 +149,8 @@ def test_valid_login_logout(test_client):
 
 
 def test_register_route(test_client):
+    """
+    Tests if the register route works.
+    """
     response = test_client.get('/register')
     assert response.status_code == 200
