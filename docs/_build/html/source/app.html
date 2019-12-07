@@ -1,0 +1,779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>app package &mdash; Connect 365 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Connect 365 1.0 documentation" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="app-package">
+<h1>app package<a class="headerlink" href="#app-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.extensions">
+<span id="app-extensions-module"></span><h2>app.extensions module<a class="headerlink" href="#module-app.extensions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-app.forms">
+<span id="app-forms-module"></span><h2>app.forms module<a class="headerlink" href="#module-app.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.forms.AddFriend">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">AddFriend</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.AddFriend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input form used to add a friend.</p>
+<dl class="attribute">
+<dt id="app.forms.AddFriend.search">
+<code class="descname">search</code><em class="property"> = &lt;UnboundField(SubmitField, ('Add',), {})&gt;</em><a class="headerlink" href="#app.forms.AddFriend.search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.AddFriend.username">
+<code class="descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CDAB0&gt;], 'description': 'Enter Friends Username'})&gt;</em><a class="headerlink" href="#app.forms.AddFriend.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.CreateEventForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">CreateEventForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.CreateEventForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input forms used on the event page.</p>
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.date">
+<code class="descname">date</code><em class="property"> = &lt;UnboundField(DateField, ('Date',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD690&gt;, &lt;wtforms_components.validators.DateRange object at 0x055CD730&gt;]})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.description">
+<code class="descname">description</code><em class="property"> = &lt;UnboundField(TextAreaField, ('Description',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x04B4C050&gt;]})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.endTime">
+<code class="descname">endTime</code><em class="property"> = &lt;UnboundField(TimeField, ('End Time',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD750&gt;]})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.endTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.startTime">
+<code class="descname">startTime</code><em class="property"> = &lt;UnboundField(TimeField, ('Start Time',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD7B0&gt;]})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.startTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Create Event',), {})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.CreateEventForm.title">
+<code class="descname">title</code><em class="property"> = &lt;UnboundField(StringField, ('Title',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x04B5B9D0&gt;]})&gt;</em><a class="headerlink" href="#app.forms.CreateEventForm.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.DeleteEventForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">DeleteEventForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.DeleteEventForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input form used to delete an event.</p>
+<dl class="attribute">
+<dt id="app.forms.DeleteEventForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Delete Event',), {})&gt;</em><a class="headerlink" href="#app.forms.DeleteEventForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.DeleteEventForm.title">
+<code class="descname">title</code><em class="property"> = &lt;UnboundField(StringField, ('Title',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD9F0&gt;], 'description': 'Enter Event to Delete'})&gt;</em><a class="headerlink" href="#app.forms.DeleteEventForm.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.EditEventForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">EditEventForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.EditEventForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input forms used on the edit event page.</p>
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.date">
+<code class="descname">date</code><em class="property"> = &lt;UnboundField(DateField, ('Date',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD870&gt;, &lt;wtforms_components.validators.DateRange object at 0x055CD890&gt;]})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.description">
+<code class="descname">description</code><em class="property"> = &lt;UnboundField(TextAreaField, ('Description',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD830&gt;]})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.endTime">
+<code class="descname">endTime</code><em class="property"> = &lt;UnboundField(TimeField, ('End Time',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD950&gt;]})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.endTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.startTime">
+<code class="descname">startTime</code><em class="property"> = &lt;UnboundField(TimeField, ('Start Time',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD8F0&gt;]})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.startTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Edit Event',), {})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.EditEventForm.title">
+<code class="descname">title</code><em class="property"> = &lt;UnboundField(StringField, ('Title',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CD7F0&gt;]})&gt;</em><a class="headerlink" href="#app.forms.EditEventForm.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.LoginForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input forms used on the login page.</p>
+<dl class="attribute">
+<dt id="app.forms.LoginForm.password">
+<code class="descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x054DD270&gt;]})&gt;</em><a class="headerlink" href="#app.forms.LoginForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.LoginForm.remember_me">
+<code class="descname">remember_me</code><em class="property"> = &lt;UnboundField(BooleanField, ('Remember',), {})&gt;</em><a class="headerlink" href="#app.forms.LoginForm.remember_me" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.LoginForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Sign In',), {})&gt;</em><a class="headerlink" href="#app.forms.LoginForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.LoginForm.username">
+<code class="descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x054DD210&gt;]})&gt;</em><a class="headerlink" href="#app.forms.LoginForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.RegistrationForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">RegistrationForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.RegistrationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Input form used on registration page</p>
+<dl class="attribute">
+<dt id="app.forms.RegistrationForm.email">
+<code class="descname">email</code><em class="property"> = &lt;UnboundField(StringField, ('Email',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CDBF0&gt;, &lt;wtforms.validators.Email object at 0x055CDC10&gt;]})&gt;</em><a class="headerlink" href="#app.forms.RegistrationForm.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.RegistrationForm.password">
+<code class="descname">password</code><em class="property"> = &lt;UnboundField(PasswordField, ('Password',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CDC90&gt;]})&gt;</em><a class="headerlink" href="#app.forms.RegistrationForm.password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.RegistrationForm.password2">
+<code class="descname">password2</code><em class="property"> = &lt;UnboundField(PasswordField, ('Repeat Password',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CDCF0&gt;, &lt;wtforms.validators.EqualTo object at 0x055CDD10&gt;]})&gt;</em><a class="headerlink" href="#app.forms.RegistrationForm.password2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.RegistrationForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Register',), {})&gt;</em><a class="headerlink" href="#app.forms.RegistrationForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.forms.RegistrationForm.username">
+<code class="descname">username</code><em class="property"> = &lt;UnboundField(StringField, ('Username',), {'validators': [&lt;wtforms.validators.DataRequired object at 0x055CDB70&gt;]})&gt;</em><a class="headerlink" href="#app.forms.RegistrationForm.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.forms.RegistrationForm.validate_email">
+<code class="descname">validate_email</code><span class="sig-paren">(</span><em>email</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.RegistrationForm.validate_email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.forms.RegistrationForm.validate_username">
+<code class="descname">validate_username</code><span class="sig-paren">(</span><em>username</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.RegistrationForm.validate_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.forms.ScheduleForm">
+<em class="property">class </em><code class="descclassname">app.forms.</code><code class="descname">ScheduleForm</code><span class="sig-paren">(</span><em>formdata=&lt;object object&gt;</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.forms.ScheduleForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_wtf.form.FlaskForm</span></code></p>
+<p>Submit button used on the schedule page.</p>
+<dl class="attribute">
+<dt id="app.forms.ScheduleForm.submit">
+<code class="descname">submit</code><em class="property"> = &lt;UnboundField(SubmitField, ('Submit',), {})&gt;</em><a class="headerlink" href="#app.forms.ScheduleForm.submit" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.routes">
+<span id="app-routes-module"></span><h2>app.routes module<a class="headerlink" href="#module-app.routes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.routes.createEvent">
+<code class="descclassname">app.routes.</code><code class="descname">createEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.createEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create Event Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Create events (title, description, date, start and end time) via a form</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.createSchedule">
+<code class="descclassname">app.routes.</code><code class="descname">createSchedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.createSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit/Create Schedule Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Users will be allowed to edit/create their schedule here.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.deleteEvent">
+<code class="descclassname">app.routes.</code><code class="descname">deleteEvent</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.deleteEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete Event Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Deletes the event with id of &#8216;id&#8217;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> (<em>int</em>) &#8211; Id of the event you want to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.editEvent">
+<code class="descclassname">app.routes.</code><code class="descname">editEvent</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.editEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edit Event Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Edits and updates the event with id of &#8216;id&#8217;</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> (<em>int</em>) &#8211; Id of the event you want to edit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.friends">
+<code class="descclassname">app.routes.</code><code class="descname">friends</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.friends" title="Permalink to this definition">¶</a></dt>
+<dd><p>Friends Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Page for users to send friend requests</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.getSchedule">
+<code class="descclassname">app.routes.</code><code class="descname">getSchedule</code><span class="sig-paren">(</span><em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.getSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Schedule Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Gets the schedule of the user that is passed in via function parameter</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>user</strong> (<em>string</em>) &#8211; User to retrieve schedule</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.index">
+<code class="descclassname">app.routes.</code><code class="descname">index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main Home Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Displays the user status and friends</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.landingPage">
+<code class="descclassname">app.routes.</code><code class="descname">landingPage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.landingPage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="app.routes.login">
+<code class="descclassname">app.routes.</code><code class="descname">login</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Login Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Page for users to log into their account</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.logout">
+<code class="descclassname">app.routes.</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logout</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Function used to log out the current user</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.register">
+<code class="descclassname">app.routes.</code><code class="descname">register</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.register" title="Permalink to this definition">¶</a></dt>
+<dd><p>Register Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Page for new users to register for an account</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.updateFriendRequest">
+<code class="descclassname">app.routes.</code><code class="descname">updateFriendRequest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.updateFriendRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Friend Request Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Function to accept or decline an incoming friend request.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.updateSchedule">
+<code class="descclassname">app.routes.</code><code class="descname">updateSchedule</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.updateSchedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Schedule Function</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Uses AJAX calls to retrieve changed schedule data and updates the database</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.updateStatus">
+<code class="descclassname">app.routes.</code><code class="descname">updateStatus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.updateStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update Status</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Function used to update the current user&#8217;s status</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.routes.viewEvent">
+<code class="descclassname">app.routes.</code><code class="descname">viewEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.routes.viewEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>View Event Page</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">View the current user&#8217;s events</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app.models">
+<span id="app-models-module"></span><h2>app.models module<a class="headerlink" href="#module-app.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="app.models.Event">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Event</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This model contains information that is needed to create an event. 
+All of the variables for this class are listed below.</p>
+<dl class="attribute">
+<dt id="app.models.Event.date">
+<code class="descname">date</code><a class="headerlink" href="#app.models.Event.date" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.description">
+<code class="descname">description</code><a class="headerlink" href="#app.models.Event.description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.endTime">
+<code class="descname">endTime</code><a class="headerlink" href="#app.models.Event.endTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Event.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.startTime">
+<code class="descname">startTime</code><a class="headerlink" href="#app.models.Event.startTime" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.title">
+<code class="descname">title</code><a class="headerlink" href="#app.models.Event.title" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Event.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#app.models.Event.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.Friend">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">Friend</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.Friend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This is a friend model that connects the current user with other users.
+All of the variables for this class are listed below.</p>
+<dl class="attribute">
+<dt id="app.models.Friend.friend_username">
+<code class="descname">friend_username</code><a class="headerlink" href="#app.models.Friend.friend_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Friend.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.Friend.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.Friend.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#app.models.Friend.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.FriendRequest">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">FriendRequest</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.FriendRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This model contains a table of friend requests that are sent/received.
+All of the variables for this class are listed below.</p>
+<dl class="attribute">
+<dt id="app.models.FriendRequest.friend_username">
+<code class="descname">friend_username</code><a class="headerlink" href="#app.models.FriendRequest.friend_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.FriendRequest.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.FriendRequest.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.FriendRequest.request_status">
+<code class="descname">request_status</code><a class="headerlink" href="#app.models.FriendRequest.request_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.FriendRequest.requester_username">
+<code class="descname">requester_username</code><a class="headerlink" href="#app.models.FriendRequest.requester_username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.FriendRequest.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#app.models.FriendRequest.user_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="app.models.User">
+<em class="property">class </em><code class="descclassname">app.models.</code><code class="descname">User</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.User" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">flask_login.mixins.UserMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">sqlalchemy.ext.declarative.api.Model</span></code></p>
+<p>This model contains information of the user. 
+All of the variables for this class are listed below.</p>
+<dl class="method">
+<dt id="app.models.User.check_password">
+<code class="descname">check_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.User.check_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.email">
+<code class="descname">email</code><a class="headerlink" href="#app.models.User.email" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.events">
+<code class="descname">events</code><a class="headerlink" href="#app.models.User.events" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.friend_request">
+<code class="descname">friend_request</code><a class="headerlink" href="#app.models.User.friend_request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.friends">
+<code class="descname">friends</code><a class="headerlink" href="#app.models.User.friends" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.id">
+<code class="descname">id</code><a class="headerlink" href="#app.models.User.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.password_hash">
+<code class="descname">password_hash</code><a class="headerlink" href="#app.models.User.password_hash" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.schedule">
+<code class="descname">schedule</code><a class="headerlink" href="#app.models.User.schedule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="app.models.User.set_password">
+<code class="descname">set_password</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.User.set_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.status">
+<code class="descname">status</code><a class="headerlink" href="#app.models.User.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="app.models.User.username">
+<code class="descname">username</code><a class="headerlink" href="#app.models.User.username" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="app.models.load_user">
+<code class="descclassname">app.models.</code><code class="descname">load_user</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#app.models.load_user" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-app.test_main">
+<span id="app-test-main-module"></span><h2>app.test_main module<a class="headerlink" href="#module-app.test_main" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.test_main.new_event">
+<code class="descclassname">app.test_main.</code><code class="descname">new_event</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.new_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a test event.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.new_user">
+<code class="descclassname">app.test_main.</code><code class="descname">new_user</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.new_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a test user 1.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.new_user1">
+<code class="descclassname">app.test_main.</code><code class="descname">new_user1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.new_user1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a test user 2.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_client">
+<code class="descclassname">app.test_main.</code><code class="descname">test_client</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a test client for unit testing.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_delete_event">
+<code class="descclassname">app.test_main.</code><code class="descname">test_delete_event</code><span class="sig-paren">(</span><em>new_event</em>, <em>test_client</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_delete_event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the event deletion route works.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_friend_request">
+<code class="descclassname">app.test_main.</code><code class="descname">test_friend_request</code><span class="sig-paren">(</span><em>new_user</em>, <em>new_user1</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_friend_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the friend request system&#8217;s request status works.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_friend_system">
+<code class="descclassname">app.test_main.</code><code class="descname">test_friend_system</code><span class="sig-paren">(</span><em>new_user</em>, <em>new_user1</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_friend_system" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if two users can add each other correctly.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_new_user">
+<code class="descclassname">app.test_main.</code><code class="descname">test_new_user</code><span class="sig-paren">(</span><em>new_user</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_new_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if a new user can be created.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_register_route">
+<code class="descclassname">app.test_main.</code><code class="descname">test_register_route</code><span class="sig-paren">(</span><em>test_client</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_register_route" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the register route works.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_user_authentication">
+<code class="descclassname">app.test_main.</code><code class="descname">test_user_authentication</code><span class="sig-paren">(</span><em>new_user</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_user_authentication" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if a new user is authenticated.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_user_id">
+<code class="descclassname">app.test_main.</code><code class="descname">test_user_id</code><span class="sig-paren">(</span><em>new_user</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates a new user&#8217;s id.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_user_status">
+<code class="descclassname">app.test_main.</code><code class="descname">test_user_status</code><span class="sig-paren">(</span><em>new_user</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_user_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if a user can set their status.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="app.test_main.test_valid_login_logout">
+<code class="descclassname">app.test_main.</code><code class="descname">test_valid_login_logout</code><span class="sig-paren">(</span><em>test_client</em><span class="sig-paren">)</span><a class="headerlink" href="#app.test_main.test_valid_login_logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tests if the login and logout routes work.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-app" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="app.create_app">
+<code class="descclassname">app.</code><code class="descname">create_app</code><span class="sig-paren">(</span><em>test_config=&lt;class 'config.Config'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#app.create_app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">app package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-app.extensions">app.extensions module</a></li>
+<li><a class="reference internal" href="#module-app.forms">app.forms module</a></li>
+<li><a class="reference internal" href="#module-app.routes">app.routes module</a></li>
+<li><a class="reference internal" href="#module-app.models">app.models module</a></li>
+<li><a class="reference internal" href="#module-app.test_main">app.test_main module</a></li>
+<li><a class="reference internal" href="#module-app">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/source/app.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Calvin, Gianni, Bhavana, Nicholas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/source/app.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

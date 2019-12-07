@@ -6,6 +6,10 @@ from flask_login import UserMixin
 
 
 class User(UserMixin, db.Model):
+    """
+    This model contains information of the user. 
+    All of the variables for this class are listed below.
+    """
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(128), index=True, unique=True)
@@ -29,6 +33,10 @@ class User(UserMixin, db.Model):
 
 
 class Event(db.Model):
+    """
+    This model contains information that is needed to create an event. 
+    All of the variables for this class are listed below.
+    """
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(35), index=True)
     description = db.Column(db.String(256), index=True)
@@ -42,6 +50,10 @@ class Event(db.Model):
 
 
 class Friend(db.Model):
+    """
+    This is a friend model that connects the current user with other users.
+    All of the variables for this class are listed below.
+    """
     id = db.Column(db.Integer, primary_key=True)
     friend_username = db.Column(db.String(64), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -51,6 +63,10 @@ class Friend(db.Model):
 
 
 class FriendRequest(db.Model):
+    """
+    This model contains a table of friend requests that are sent/received.
+    All of the variables for this class are listed below.
+    """
     id = db.Column(db.Integer, primary_key=True)
     requester_username = db.Column(db.String(64), index=True)
     friend_username = db.Column(db.String(64), index=True)

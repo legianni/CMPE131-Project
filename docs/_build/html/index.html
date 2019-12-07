@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Connect 365 Documentation &mdash; Connect 365 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Connect 365 1.0 documentation" href="#" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="connect-365-documentation">
+<h1><strong>Connect 365 Documentation</strong><a class="headerlink" href="#connect-365-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>Overview:<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Many students have trouble aligning their schedule with friends and finding the time to hang out. Determining the availability of your friends is even more difficult with larger groups, as you would have to either view all their schedules individually or message everyone in a group chat (which can be a hassle to do).</p>
+<p>The objective of our web application is to solve scheduling issues among friends, and allow one to easily access a friend’s availability at any given time.</p>
+<p>Live Website: <a class="reference external" href="https://connect-365.herokuapp.com">https://connect-365.herokuapp.com</a></p>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>To setup a localhost web server for developmental purposes, install Python 3.6 with pip.
+Next, install the required packages in terminal
+<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-U</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span></code>
+To run the application
+<code class="docutils literal"><span class="pre">python</span> <span class="pre">main.py</span></code></p>
+</div>
+<div class="section" id="test-cases">
+<h2>Test Cases<a class="headerlink" href="#test-cases" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of unit testing is to validate functionalities of the application when new code is pushed to the repository. TravisCI will determine if the test cases pass or fail.</p>
+<p>The test cases are located in the <cite>app</cite> folder.</p>
+<div class="section" id="running-test-cases">
+<h3>Running Test Cases<a class="headerlink" href="#running-test-cases" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that <cite>pytest</cite> is installed
+<code class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pytest</span></code>
+To run all the test cases of this application, go to the project&#8217;s base directory and type the following in terminal
+<code class="docutils literal"><span class="pre">pytest</span></code>
+Test cases are successful if there are no errors (indicated in green)</p>
+</div>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Log-in</strong>: Users will input their information and log into their account.</li>
+<li><strong>Log-out</strong>: Once finished using the website, users will be able to log out from their account.</li>
+<li><strong>Register</strong>: If the user does not have an account they will be able to register with a new account.</li>
+<li><strong>Create Event</strong>: When the user is logged in, they can create events or plans for the upcoming week/month/year.</li>
+<li><strong>View Event</strong>: Users will be able to see their events.</li>
+<li><strong>Delete Event</strong>: Users will be able to delete their events.</li>
+<li><strong>Set Status</strong>: When logged in, users can set their status as available or unavailable for their friends to see.</li>
+<li><strong>Add Friend</strong>: Users can add their friends by sending a friend request.</li>
+<li><strong>Friend Request</strong>: Users will be able to accept or decline incoming friend requests.</li>
+<li><strong>Set Schedule</strong>: Users will be able to set their schedule by setting which hour of the day in the week they are available.</li>
+<li><strong>View Friend</strong>: On the home page, users will be able to see their added friends and availability status.</li>
+<li><strong>View Friend&#8217;s Schedule</strong>: Users will be able to click on their friends&#8217; schedules and view them in a modal.</li>
+</ul>
+</div>
+<div class="section" id="built-with">
+<h2>Built With<a class="headerlink" href="#built-with" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.python.org/">Python</a>: An interpreted, high-level, general-purpose programming language.</li>
+<li><a class="reference external" href="http://flask.palletsprojects.com/en/1.1.x/">Flask</a>: A micro web framework written in Python</li>
+<li><a class="reference external" href="https://www.sqlalchemy.org/">SQLAlchemy</a>: An open-source SQL toolkit and object-relational mapper (ORM) for the Python programming language released under the MIT License</li>
+<li><a class="reference external" href="https://www.javascript.com/">JavaScript</a>: A lightweight, interpreted, or just-in-time compiled programming language with first-class functions.</li>
+<li><a class="reference external" href="https://jquery.com/">JQuery</a>: A JavaScript library designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.</li>
+<li><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a>, <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a>: Hypertext Markup Language and Cascading Style Sheet</li>
+<li><a class="reference external" href="https://getbootstrap.com/">Bootstrap</a>: An open-source CSS framework directed at responsive, mobile-first front-end web development.</li>
+<li><a class="reference external" href="https://www.heroku.com/">Heroku</a>: A cloud platform used to deploy, manage, and scale modern apps.</li>
+</ul>
+</div>
+<div class="section" id="connect-365-navigation">
+<h2>Connect 365 Navigation<a class="headerlink" href="#connect-365-navigation" title="Permalink to this headline">¶</a></h2>
+<p>Image of the application&#8217;s root folder.</p>
+<img alt="_images/rootLevel.png" src="_images/rootLevel.png" />
+<ul class="simple">
+<li><strong>main.py</strong> - Main file that runs our application.</li>
+<li><strong>config.py</strong> - Config file that contains information for our database.</li>
+<li><strong>requirements.txt</strong> - List of required libraries needed to run our application.</li>
+<li><strong>app folder</strong> - Directory that contains the application&#8217;s main code.</li>
+<li><strong>docs folder</strong> - Folder that contains files &amp; documentation via Sphinx.</li>
+</ul>
+<p>Image of the application&#8217;s app folder.</p>
+<img alt="_images/appLevel.png" src="_images/appLevel.png" />
+<ul class="simple">
+<li><strong>__init__.py</strong> - Initializes the application.</li>
+<li><strong>forms.py</strong> - Contains flask_wtf forms used in templates.</li>
+<li><strong>models.py</strong> - Contains models of our database tables.</li>
+<li><strong>routes.py</strong> - Sets valid routes and the code executed when visiting that route.</li>
+<li><strong>test_main.py</strong> - Test file that is executed via pytest.</li>
+<li><strong>static folder</strong> - Contains CSS, BootStrap and images.</li>
+<li><strong>templates folder</strong> - Contains HTML files using Jinja&#8217;s templating style.</li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><strong>Connect 365 Documentation</strong></a><ul>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#overview">Overview:</a></li>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li><a class="reference internal" href="#test-cases">Test Cases</a><ul>
+<li><a class="reference internal" href="#running-test-cases">Running Test Cases</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#built-with">Built With</a></li>
+<li><a class="reference internal" href="#connect-365-navigation">Connect 365 Navigation</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Calvin, Gianni, Bhavana, Nicholas.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

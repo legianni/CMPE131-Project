@@ -7,7 +7,7 @@ Many students have trouble aligning their schedule with friends and finding the 
 
 The objective of our web application is to solve scheduling issues among friends, and allow one to easily access a friend’s availability at any given time.
 
-[Live Website: https://connect-365.herokuapp.com/]: https://connect-365.herokuapp.com/
+Live Website: https://connect-365.herokuapp.com
 
 ## Getting Started
 To setup a localhost web server for developmental purposes, install Python 3.6 with pip.
@@ -24,10 +24,16 @@ To run the application
 python main.py
 ```
 
+## Sphinx Documentation
+More information about Connect 365 is available via the documentation.
+[/docs/_build/html/index.html](https://github.com/legianni/CMPE131-Project/tree/master/docs/_build/html/)
+
 ## Test Cases
 The purpose of unit testing is to validate functionalities of the application when new code is pushed to the repository. TravisCI will determine if the test cases pass or fail.
 
 The test cases are located in the `app` folder.
+
+[/app/test_main.py](https://github.com/legianni/CMPE131-Project/tree/master/app/test_main.py)
 
 ### Running Test Cases
 Ensure that `pytest` is installed
