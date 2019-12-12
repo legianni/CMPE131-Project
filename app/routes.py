@@ -16,6 +16,7 @@ def landingPage():
 
 
 @app.route('/index')
+@login_required
 def index():
     """Main Home Page
 
