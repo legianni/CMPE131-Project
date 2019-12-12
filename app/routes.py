@@ -67,7 +67,7 @@ def logout():
 
     """
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
 
 # route to register a user
 @app.route('/register', methods=['GET', 'POST'])
